@@ -1,0 +1,11 @@
+client_id = ""  # optional if not available
+
+[[tunnels]]
+name = "Java Server"
+proto = "tcp"
+dst = "localhost:25565"
+
+[[tunnels]]
+name = "Bedrock Server"
+proto = "udp"
+dst = "localhost:19132"
