@@ -24,9 +24,9 @@ jobs:
 
       - name: Install Playit Tunnel
         run: |
-          curl -fsSL https://playit-cloud.github.io/installer.sh | bash
+          curl -L https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64 -o playit
           chmod +x playit
-          ./playit &
+          ./playit & sleep 5
 
       - name: Run Minecraft server
         run: |
