@@ -1,0 +1,21 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:used_totem",
+        "conditions": {
+          "player": {},
+          "item": {
+            "predicates": {
+              "minecraft:custom_data": {
+                "wasd_totem_type": 7
+              }
+            }
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "wasd.totems:totem/protection"
+    }
+  }
+  

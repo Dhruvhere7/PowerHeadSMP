@@ -1,0 +1,22 @@
+{
+  "parent": "wasd.bosses:metallic",
+  "display": {
+    "icon": {
+      "id": "minecraft:clay_ball",
+      "components": {
+        "minecraft:item_model": "wasd:recipes/bosses/chicken"
+      }
+    },
+    "title": "Chicken Boss   ",
+    "description": "\nSpawns In:\n   Plains +\n   Chicken is Nearby\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

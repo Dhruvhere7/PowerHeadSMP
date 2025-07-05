@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands",
+    "pattern": [
+        "B",
+        "C",
+        "D"
+    ],
+    "key": {
+        "B": "minecraft:tinted_glass",
+        "C": "minecraft:nether_star",
+        "D": "minecraft:black_candle"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Shadow Wand\",\"translate\":\"wasd.wands.shadow\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Summons a shadow player that damages everything around it.\",\"translate\":\"wasd.wands.shadow.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370140
+                ]
+            },
+            "minecraft:item_model": "wasd:wands/base_wand",
+            "minecraft:custom_data": {
+                "wasd_wand_type": 40,
+                "wasd_wand": 1
+            }
+        }
+    }
+}

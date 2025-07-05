@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:gravel"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Drop Pearl\",\"translate\":\"wasd.pearls.drop\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Swaps the location of the thrower and the mob/player hit.\",\"translate\":\"wasd.pearls.drop.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 10,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/drop"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:firework_star"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Party Pearl\",\"translate\":\"wasd.pearls.party\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Spawns an Endermite at where you threw it.\",\"translate\":\"wasd.pearls.party.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 9,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/party"
+        }
+    }
+}

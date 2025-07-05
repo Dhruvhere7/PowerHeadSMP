@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        "ABA",
+        "BTB",
+        "ABA"
+    ],
+    "key": {
+        "T": "minecraft:totem_of_undying",
+        "A": "minecraft:tnt",
+        "B": "minecraft:gunpowder"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:gold_nugget",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Totem of TNT\",\"translate\":\"wasd.totems.tnt\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Nullifies all TNT damage.\",\"translate\":\"wasd.totems.tnt.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:max_stack_size": 1,
+            "minecraft:custom_data": {
+                "wasd_totem_type": 11,
+                "wasd_totem": 1,
+                "wasd_held_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/tnt"
+        }
+    }
+}

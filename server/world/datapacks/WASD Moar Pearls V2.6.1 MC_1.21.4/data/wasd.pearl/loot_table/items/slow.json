@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Slow Pearl\",\"translate\":\"wasd.pearls.slow\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Travels much slower than a normal pearl.\",\"translate\":\"wasd.pearls.slow.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 2,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/slow"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

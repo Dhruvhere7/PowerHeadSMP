@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:black_concrete",
+        "minecraft:yellow_concrete"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Safety Pearl\",\"translate\":\"wasd.pearls.safety\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Gives potion effects to save you from bad situations.\",\"translate\":\"wasd.pearls.safety.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 19,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/safety"
+        }
+    }
+}

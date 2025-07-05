@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:warped_fungus_on_a_stick",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Log Wand\",\"translate\":\"wasd.wands.log\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Pulls logs out of the ground that hold the target in place.\",\"translate\":\"wasd.wands.log.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370133
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:wands/base_wand",
+                                "minecraft:custom_data": {
+                                    "wasd_wand_type": 33,
+                                    "wasd_wand": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

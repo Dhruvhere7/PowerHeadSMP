@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:hanging_roots"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Hanging Pearl\",\"translate\":\"wasd.pearls.hanging\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Hangs in place for 10 seconds, then drops straight down.\",\"translate\":\"wasd.pearls.hanging.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 3,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/hanging"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands",
+    "pattern": [
+        "ABA",
+        " C ",
+        " D "
+    ],
+    "key": {
+        "A": "minecraft:feather",
+        "B": "minecraft:cooked_chicken",
+        "C": "minecraft:nether_star",
+        "D": "minecraft:redstone_torch"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"KFC Wand\",\"translate\":\"wasd.wands.kfc\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Launches burning exploding chickens.\",\"translate\":\"wasd.wands.kfc.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370128
+                ]
+            },
+            "minecraft:item_model": "wasd:wands/base_wand",
+            "minecraft:custom_data": {
+                "wasd_wand_type": 28,
+                "wasd_wand": 1
+            }
+        }
+    }
+}

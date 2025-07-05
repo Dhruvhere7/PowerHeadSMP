@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_apple",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Crying Obsidian Apple\",\"translate\":\"wasd.apples.crying_obsidian\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Converts nearby lava into obsidian temporarily.\",\"translate\": \"wasd.apples.crying_obsidian.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_apple_type": 6,
+                                    "wasd_apple": 1
+                                },
+                                "minecraft:item_model": "wasd:apples/crying_obsidian"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

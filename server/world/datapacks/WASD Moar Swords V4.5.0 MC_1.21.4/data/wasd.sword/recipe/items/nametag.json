@@ -1,0 +1,48 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:name_tag"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Name Tag Sword\",\"translate\":\"wasd.sword.nametag\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Gives mobs random names.\",\"translate\": \"wasd.sword.nametag.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/nametag",
+            "minecraft:max_damage": 131,
+            "repairable": {"items": "name_tag"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 9
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 3,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

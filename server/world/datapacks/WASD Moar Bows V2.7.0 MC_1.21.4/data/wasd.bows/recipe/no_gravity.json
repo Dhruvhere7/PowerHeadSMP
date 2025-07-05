@@ -1,0 +1,38 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:feather",
+        "$": "minecraft:phantom_membrane",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.no_gravity\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.no_gravity.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370113
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/no_gravity",
+            "repairable": {
+                "items": "feather"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

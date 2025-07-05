@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Infested Pearl\",\"translate\":\"wasd.pearls.infested\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Flies with no gravity.\",\"translate\":\"wasd.pearls.infested.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 4,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/infested"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

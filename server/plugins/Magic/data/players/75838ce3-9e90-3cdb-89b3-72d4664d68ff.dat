@@ -1,0 +1,34 @@
+id: 75838ce3-9e90-3cdb-89b3-72d4664d68ff
+name: +OP_Bandar_YT
+created: 1751017115742
+updated: 1751017130835
+last_cast: 0
+cooldown_expiration: 0
+last_death_location: ''
+fall_protection_count: 0
+fall_protection: 0
+brush:
+  map_id: -1
+  material: dirt
+  data: 0
+  schematic: ''
+  scale: 1.0
+  erase: true
+undo:
+  e50c3d1c-0331-4157-9646-ddb416126270: []
+spells: {}
+open_wand: false
+gave_welcome_wand: false
+resource_pack_preference: default
+data: {}
+properties: {}
+shown_help: true
+classes:
+  caster: {}
+  mage:
+    effect_color: d0b58d0b8ce7,f17b7e6e7196,c32c0bebff56
+    mana_timestamp: 1751017130206
+    mana: 50.0
+transient_modifiers: {}
+active_class: mage
+health: 20.0

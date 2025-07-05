@@ -1,0 +1,24 @@
+{
+  "parent": "wasd.bosses:water",
+  "display": {
+    "icon": {
+      "id": "minecraft:clay_ball",
+      "components": {
+        "minecraft:item_model": "wasd:recipes/bosses/earth"
+      }
+    },
+    "title": "Earth Boss ",
+    "description": "\nSpawns In:\n   Forest\n   Plains\n   Stony Shore\n   Swamp\n   Taiga\n   Taiga Mountains\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}
+
+

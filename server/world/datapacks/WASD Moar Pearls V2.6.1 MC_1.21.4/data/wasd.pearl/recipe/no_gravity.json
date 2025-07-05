@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:feather"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"No Gravity Pearl\",\"translate\":\"wasd.pearls.no_gravity\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Travels normally for 1 second, then drops straight down.\",\"translate\":\"wasd.pearls.no_gravity.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 7,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/no_gravity"
+        }
+    }
+}

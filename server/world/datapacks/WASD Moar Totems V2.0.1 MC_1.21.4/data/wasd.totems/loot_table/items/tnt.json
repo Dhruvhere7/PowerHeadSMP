@@ -1,0 +1,31 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:gold_nugget",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Totem of TNT\",\"translate\":\"wasd.totems.tnt\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Nullifies all TNT damage.\",\"translate\":\"wasd.totems.tnt.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:max_stack_size": 1,
+                                "minecraft:custom_data": {
+                                    "wasd_totem_type": 11,
+                                    "wasd_totem": 1,
+                                    "wasd_held_totem": 1
+                                },
+                                "minecraft:item_model": "wasd:totem/tnt"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

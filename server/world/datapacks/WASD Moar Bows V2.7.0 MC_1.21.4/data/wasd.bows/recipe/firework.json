@@ -1,0 +1,39 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:firework_rocket",
+        "$": "minecraft:firework_star",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.firework\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.firework.lore\", \"italic\":false, \"color\":blue}",
+                "{\"translate\": \"wasd.bows.firework.lore2\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370105
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/firework",
+            "repairable": {
+                "items": "firework_rocket"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

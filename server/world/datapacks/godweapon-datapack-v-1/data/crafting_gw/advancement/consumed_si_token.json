@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "on_consume": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:golden_apple",
+          "components": {
+            "minecraft:custom_data": {
+              "si_token": true,
+              "gw_token": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "crafting_gw:consumed_si_token",
+    "recipes": []
+  }
+}

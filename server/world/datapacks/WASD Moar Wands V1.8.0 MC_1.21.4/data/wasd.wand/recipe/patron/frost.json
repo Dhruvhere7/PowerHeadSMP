@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Frost Wand\",\"translate\":\"wasd.wands.frost\",\"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"Chills the ground, slowing enemies on it.\",\"translate\":\"wasd.wands.frost.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_wand_type": 7,
+                "wasd_wand": 1
+            },
+            "minecraft:item_model": "wasd:wands/frost"
+        }
+    }
+}

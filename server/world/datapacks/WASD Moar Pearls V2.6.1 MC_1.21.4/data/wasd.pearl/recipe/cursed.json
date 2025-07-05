@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:soul_sand"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Cursed Pearl\",\"translate\":\"wasd.pearls.cursed\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Gives slowness unless it lands on soul sand, which gives speed.\",\"translate\":\"wasd.pearls.cursed.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 12,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/cursed"
+        }
+    }
+}

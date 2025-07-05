@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Magnetic Pearl\",\"translate\":\"wasd.pearls.magnetic\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Pulls mobs to where it lands. Doesn't teleport.\",\"translate\":\"wasd.pearls.magnetic.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 23,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/magnetic"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

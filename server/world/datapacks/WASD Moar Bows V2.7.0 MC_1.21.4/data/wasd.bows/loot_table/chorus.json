@@ -1,0 +1,37 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:bow",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"translate\":\"wasd.bows.chorus\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"wasd.bows.chorus.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370112
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:bows/chorus",
+                                "repairable": {
+                                    "items": "chorus_fruit"
+                                },
+                                "minecraft:max_damage": 384,
+                                "minecraft:custom_data": {
+                                    "wasd_bow": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

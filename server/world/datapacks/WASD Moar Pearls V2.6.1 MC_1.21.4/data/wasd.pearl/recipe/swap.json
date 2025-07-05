@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:lead"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Swap Pearl\",\"translate\":\"wasd.pearls.swap\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Creates a dance party that causes mobs to spin!\",\"translate\":\"wasd.pearls.swap.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 8,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/swap"
+        }
+    }
+}

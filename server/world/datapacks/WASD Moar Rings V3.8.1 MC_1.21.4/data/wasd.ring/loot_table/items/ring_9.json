@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:gold_nugget",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Green Ring\",\"translate\":\"wasd.rings.ring_9\",\"italic\":false,\"color\":\"yellow\"}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Magic regeneration increased. Requires The WASD Magic Meter.\",\"translate\":\"wasd.rings.ring_9.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "max_stack_size": 1,
+                                "minecraft:custom_data": {
+                                    "wasd_ring_type": 9,
+                                    "wasd_ring": 1
+                                },
+                                "minecraft:item_model": "wasd:rings/9"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

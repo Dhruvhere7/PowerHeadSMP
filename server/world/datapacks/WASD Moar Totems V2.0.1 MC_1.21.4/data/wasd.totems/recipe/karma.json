@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        "AAA",
+        "ATA",
+        "AAA"
+    ],
+    "key": {
+        "T": "minecraft:totem_of_undying",
+        "A": "minecraft:cactus"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:totem_of_undying",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Totem of Karma\",\"translate\":\"wasd.totems.karma\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Debuffs nearby entities when activated.\",\"translate\":\"wasd.totems.karma.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_totem_type": 9,
+                "wasd_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/karma"
+        }
+    }
+}

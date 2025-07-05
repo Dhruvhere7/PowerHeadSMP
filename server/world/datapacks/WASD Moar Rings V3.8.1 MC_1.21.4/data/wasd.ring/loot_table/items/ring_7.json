@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:gold_nugget",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Red Ring\",\"translate\":\"wasd.rings.ring_7\",\"italic\":false,\"color\":\"yellow\"}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Attack damage increased.\",\"translate\":\"wasd.rings.ring_7.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "max_stack_size": 1,
+                                "minecraft:custom_data": {
+                                    "wasd_ring_type": 7,
+                                    "wasd_ring": 1
+                                },
+                                "minecraft:item_model": "wasd:rings/7"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

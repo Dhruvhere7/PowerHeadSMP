@@ -1,0 +1,49 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "water_swords",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:turtle_scute"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Turtle Sword\",\"translate\":\"wasd.sword.turtle\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Makes you slow but highly resistant.\",\"translate\": \"wasd.sword.turtle.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/turtle",
+            "minecraft:max_damage": 1561,
+            "repairable": {"items": "turtle_scute"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 65
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

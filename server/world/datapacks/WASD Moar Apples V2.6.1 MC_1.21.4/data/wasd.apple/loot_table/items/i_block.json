@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:carrot_on_a_stick",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Apple i-Block\",\"translate\":\"wasd.apples.i_block\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Right-Click to shuffle music!\",\"translate\": \"wasd.apples.i_block.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_apple_type": 16,
+                                    "wasd_apple": 1
+                                },
+                                "minecraft:item_model": "wasd:apples/i_block"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:golden_apple"
+          ],
+          "predicates": {
+            "minecraft:custom_data": {
+              "wasd_apple_type": 18
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "wasd.apple:patron/eat/18"
+  }
+}

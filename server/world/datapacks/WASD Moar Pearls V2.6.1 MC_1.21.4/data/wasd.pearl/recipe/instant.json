@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:emerald"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Instant Pearl\",\"translate\":\"wasd.pearls.instant\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Instantly teleports you up to 50 blocks.\",\"translate\":\"wasd.pearls.instant.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 5,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/instant"
+        }
+    }
+}

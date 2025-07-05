@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Safety Pearl\",\"translate\":\"wasd.pearls.safety\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Gives potion effects to save you from bad situations.\",\"translate\":\"wasd.pearls.safety.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 19,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/safety"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

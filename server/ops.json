@@ -1,0 +1,32 @@
+[
+  {
+    "uuid": "75838ce3-9e90-3cdb-89b3-72d4664d68ff",
+    "name": "+OP_Bandar_YT",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "f680df9b-ac5c-4d3f-9bac-75bc0e316afa",
+    "name": "Admin",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "d5b8f7f2-c14e-3b4d-b659-332c8f9f8efa",
+    "name": "+UNITEBEYBOY",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "2e90cbe5-d690-36fb-b094-a4c13ee46ad5",
+    "name": "+PowerHead",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "926c9751-aeee-316a-8a56-6a456cb3b469",
+    "name": "+Umang45",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]

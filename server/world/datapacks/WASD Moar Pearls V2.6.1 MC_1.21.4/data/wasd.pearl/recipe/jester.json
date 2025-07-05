@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:tropical_fish"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Jester Pearl\",\"translate\":\"wasd.pearls.jester\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Instead of teleporting, it makes you invisible when it lands.\",\"translate\":\"wasd.pearls.jester.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 18,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/jester"
+        }
+    }
+}

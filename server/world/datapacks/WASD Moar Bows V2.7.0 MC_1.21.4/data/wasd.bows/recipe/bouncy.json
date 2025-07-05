@@ -1,0 +1,38 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:lime_bed",
+        "$": "minecraft:slime_block",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.bouncy\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.bouncy.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370130
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/bouncy",
+            "repairable": {
+                "items": "slime_block"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

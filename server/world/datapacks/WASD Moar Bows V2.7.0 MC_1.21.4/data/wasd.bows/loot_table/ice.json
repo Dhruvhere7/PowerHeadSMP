@@ -1,0 +1,37 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:bow",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"translate\":\"wasd.bows.ice\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"wasd.bows.ice.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370101
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:bows/ice",
+                                "repairable": {
+                                    "items": "ice"
+                                },
+                                "minecraft:max_damage": 384,
+                                "minecraft:custom_data": {
+                                    "wasd_bow": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

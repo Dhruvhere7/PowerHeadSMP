@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Chorus Pearl\",\"translate\":\"wasd.pearls.chorus\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Teleports you randomly around where it landed.\",\"translate\":\"wasd.pearls.chorus.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 11,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/chorus"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+scoreboard objectives remove Unlocked_God_Tamer
+scoreboard objectives add Unlocked_God_Tamer dummy
+
+scoreboard objectives remove Unlocked_Slimy_Steppers
+scoreboard objectives add Unlocked_Slimy_Steppers dummy
+
+scoreboard objectives remove Unlocked_Sizeificator
+scoreboard objectives add Unlocked_Sizeificator dummy

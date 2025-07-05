@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_apples",
+    "pattern": [
+        "XXX",
+        "XAX",
+        "XXX"
+    ],
+    "key": {
+        "X": "minecraft:firework_star",
+        "A": "minecraft:apple"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Flare Apple\",\"translate\":\"wasd.apples.flare\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Shoot a bunch of fireworks into the sky.\",\"translate\": \"wasd.apples.flare.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_apple_type": 9,
+                "wasd_apple": 1
+            },
+            "minecraft:item_model": "wasd:apples/flare"
+        }
+    }
+}

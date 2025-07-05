@@ -1,0 +1,97 @@
+package com.example.universalskincape;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class UniversalSkinCapePlugin extends JavaPlugin implements Listener {
+
+        @Override
+            public void onEnable() {
+                        // Registrar eventos del plugin
+                                Bukkit.getPluginManager().registerEvents(this, this);
+                                        getLogger().info("UniversalSkinCapePlugin habilitado.");
+            }
+
+                @Override
+                    public void onDisable() {
+                                getLogger().info("UniversalSkinCapePlugin deshabilitado.");
+                    }
+
+                        // Evento para cuando un jugador se une al servidor
+                            @EventHandler
+                                public void onPlayerJoin(PlayerJoinEvent event) {
+                                            Player player = event.getPlayer();
+
+                                                    // Mensajes de bienvenida y simulación
+                                                            player.sendMessage(ChatColor.GREEN + "¡Bienvenido al servidor, " + player.getName() + "!");
+                                                                    player.sendMessage(ChatColor.YELLOW + "Tus skins y capas serán visibles para todos los jugadores.");
+
+                                                                            // Actualizar la simulación de skins y capas
+                                                                                    simulateSkinAndCapeVisibility(player);
+                                }
+
+                                    // Simula la visibilidad de skins y capas para todos los jugadores conectados
+                                        private void simulateSkinAndCapeVisibility(Player joiningPlayer) {
+                                                    for (Player player : Bukkit.getOnlinePlayers()) {
+                                                                    // Notificar a otros jugadores sobre la skin y capa del nuevo jugador
+                                                                                if (!player.equals(joiningPlayer)) {
+                                                                                                    player.sendMessage(ChatColor.AQUA + "¡Ahora puedes ver la skin y la capa de " + joiningPlayer.getName() + "!");
+                                                                                }
+                                                    }
+
+                                                            // Notificar al jugador que se unió
+                                                                    joiningPlayer.sendMessage(ChatColor.LIGHT_PURPLE + "¡Tu skin y capa han sido sincronizadas para todos los jugadores!");
+                                        }
+}
+
+                                                                                }
+                                                    }
+                                        }
+                                }
+                    }
+            }
+}
+public class SkinManager {
+    private final Map<UUID, SkinData> skinCache = new HashMap<>();
+
+    public void applySkin(Player player) {
+        UUID uuid = player.getUniqueId();
+        SkinData skin = skinCache.computeIfAbsent(uuid, this::fetchSkin);
+        setSkin(player, skin);
+    }
+
+    private SkinData fetchSkin(UUID uuid) {
+        // Simulación: obtener skin de Floodgate o API
+        return new SkinData("texture", "signature", "cape");
+    }
+
+    private void setSkin(Player player, SkinData skin) {
+        player.setSkin(skin.texture, skin.signature);
+        if (skin.cape != null) {
+            player.setCape(skin.cape);
+        }
+    }
+
+    public void startAutoUpdate(Plugin plugin) {
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                applySkin(p);
+            }
+        }, 0L, 20L * 60); // cada 60 segundos
+    }
+
+    // Clase simple para almacenar datos de skin
+    static class SkinData {
+        String texture, signature, cape;
+        SkinData(String texture, String signature, String cape) {
+            this.texture = texture;
+            this.signature = signature;
+            this.cape = cape;
+        }
+    }
+}

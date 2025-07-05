@@ -1,0 +1,50 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "water_swords",
+    "category": "equipment",
+    "pattern": [
+        " A ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:cod",
+        "A": "minecraft:pufferfish"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Swordfish\",\"translate\":\"wasd.sword.swordfish\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Can Poison the Target.\",\"translate\": \"wasd.sword.swordfish.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/swordfish",
+            "minecraft:max_damage": 250,
+            "repairable": {"items": ["cod","salmon","pufferfish","tropical_fish"]},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 15
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

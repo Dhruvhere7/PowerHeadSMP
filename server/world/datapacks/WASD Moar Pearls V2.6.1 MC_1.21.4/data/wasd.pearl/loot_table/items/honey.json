@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Honey Pearl\",\"translate\":\"wasd.pearls.honey\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Gives no teleportation damage, but travels less far.\",\"translate\":\"wasd.pearls.honey.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 17,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/honey"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

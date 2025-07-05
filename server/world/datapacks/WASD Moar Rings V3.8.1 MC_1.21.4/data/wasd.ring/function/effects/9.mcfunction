@@ -1,0 +1,1 @@
+scoreboard players add @a[scores={wasd.magic_meter=..1199}] wasd.magic_meter 1

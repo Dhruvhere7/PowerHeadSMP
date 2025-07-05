@@ -1,0 +1,49 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "nether_swords",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:netherrack"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Netherrack Sword\",\"translate\":\"wasd.sword.netherrack\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Occasionally makes mobs drop quartz or gold.\",\"translate\": \"wasd.sword.netherrack.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/netherrack",
+            "minecraft:max_damage": 131,
+            "repairable": {"items": "netherrack"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 90
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 5,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

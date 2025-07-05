@@ -1,0 +1,49 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "end_swords",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:chorus_fruit"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Chorus Fruit Sword\",\"translate\":\"wasd.sword.chorus_fruit\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Teleports Foes Randomly.\",\"translate\": \"wasd.sword.chorus_fruit.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/chorus_fruit",
+            "minecraft:max_damage": 250,
+            "repairable": {"items": "chorus_fruit"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 12
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 6,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

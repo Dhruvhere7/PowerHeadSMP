@@ -1,0 +1,14 @@
+# AdvancedWeapons player data is stored here
+
+playerdata:
+  2e90cbe5-d690-36fb-b094-a4c13ee46ad5:
+    name: +PowerHead
+    dust: 64
+    coinflip:
+      wins: 1
+      losses: 1
+  9ef24393-c3cd-4500-9302-4f2653aa5e3d:
+    name: NotDanishOP
+  ad021175-5447-347e-838c-4af671c89c2c:
+    name: +Bandar_OP
+    dust: 17

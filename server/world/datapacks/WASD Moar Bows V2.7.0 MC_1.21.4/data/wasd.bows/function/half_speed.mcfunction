@@ -1,0 +1,9 @@
+#mc-build WASD content
+#get the pearls current motion
+execute store result score @s wasd.pos_x1 run data get entity @s Motion[0] 10000
+execute store result score @s wasd.pos_y1 run data get entity @s Motion[1] 10000
+execute store result score @s wasd.pos_z1 run data get entity @s Motion[2] 10000
+execute store result entity @s Motion[0] double 0.0001 run scoreboard players operation @s wasd.pos_x1 /= 3 wasd.constants
+execute store result entity @s Motion[1] double 0.0001 run scoreboard players operation @s wasd.pos_y1 /= 3 wasd.constants
+execute store result entity @s Motion[2] double 0.0001 run scoreboard players operation @s wasd.pos_z1 /= 3 wasd.constants
+tag @s add wasd.motion_changed

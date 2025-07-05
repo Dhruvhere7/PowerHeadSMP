@@ -1,0 +1,38 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:redstone",
+        "$": "minecraft:redstone_block",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.long_range\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.long_range.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370127
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/long_range",
+            "repairable": {
+                "items": "redstone_block"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

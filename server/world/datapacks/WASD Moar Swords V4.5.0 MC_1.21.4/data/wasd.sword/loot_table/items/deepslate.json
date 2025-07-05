@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stone_sword",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Deepslate Sword\",\"translate\":\"wasd.sword.deepslate\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Deals more damage when low in the world.\",\"translate\": \"wasd.sword.deepslate.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:item_model": "wasd:swords/deepslate",
+                                "minecraft:max_damage": 250,
+                                "repairable": {"items": ["deepslate","cobbled_deepslate"]},
+                                "minecraft:custom_data": {
+                                    "wasd_sword": 1,
+                                    "wasd.sword_type": 85
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "minecraft:attack_damage",
+                                            "id": "6370001",
+                                            "amount": 4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        },
+                                        {
+                                            "type": "minecraft:attack_speed",
+                                            "id": "6370001",
+                                            "amount": -2.4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

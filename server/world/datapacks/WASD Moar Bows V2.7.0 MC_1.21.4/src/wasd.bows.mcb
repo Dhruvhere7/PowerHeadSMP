@@ -1,0 +1,712 @@
+function load{
+    scoreboard objectives add wasd_data_packs dummy
+    scoreboard players set wasd_bows wasd_data_packs 1
+    scoreboard objectives add wasd.shoot_bow minecraft.used:minecraft.bow
+    scoreboard objectives add wasd.bow_frame minecraft.used:minecraft.item_frame
+    scoreboard objectives add w.bows_settings dummy
+    scoreboard objectives add wasd.bow_type dummy
+
+    function wasd.bows:config
+    schedule function wasd.bows:check_installed_packs 30t
+
+}
+
+function check_installed_packs{
+    execute unless entity @a[advancements={wasd.installed:library=true}] run block{
+        tellraw @a {"bold":true,"color":"red","text":"Missing the Required Library!"}
+        tellraw @a {"text":" "}
+        tellraw @a [{"color":"dark_red","text":"Missing: "},{"clickEvent":{"action":"open_url","value":"https://wasdbuildteam.website/data-packs/wasd-libraries/"},"color":"#26DBFF","hoverEvent":{"action":"show_text","value":[{"text":"Click to Install"}]},"text":"Library"}]
+    }
+}
+
+function config{
+    #Enable/Disable recipes. 1 = Enabled/True. 0= Disabled/False.
+
+    #Enable/Disable all pack recipes.
+    scoreboard players set recipes w.bows_settings 1
+
+    #Enable/Disable particle trails for arrows.
+    scoreboard players set particles w.bows_settings 1
+
+}
+
+
+function tick{
+    #slime levitation
+    execute as @e[tag=wasd.slime_launched_bow] run effect clear @s minecraft:levitation
+    execute as @e[tag=wasd.slime_launched_bow] run tag @s remove wasd.slime_launched_bow
+    execute as @a[scores={wasd.shoot_bow=1..}] at @s run function wasd.bows:determine_bow
+    #arrow behavior
+    execute as @e[type=arrow,tag=wasd.custom_arrow] at @s run function wasd.bows:determine_arrow
+
+    #arrow spawned entities
+    execute as @e[tag=wasd.arrow_entity] at @s run function wasd.bows:as_entities
+
+    #determine hit
+    #change this to detect when the amount of custom arrows decreases
+    execute if score arrow_shot w.bows_settings matches 1 as @e[type=#wasd.tags:mobs_player] at @s if data entity @s active_effects as @s[nbt={active_effects:[{id:"minecraft:unluck"}]}] run function wasd.bows:arrow_hit
+    execute if score arrow_shot w.bows_settings matches 1.. run scoreboard players remove arrow_shot w.bows_settings 1
+    execute if score arrow_shot w.bows_settings matches 0 run scoreboard players reset arrow_shot w.bows_settings
+
+
+}
+
+function give_items{
+    loot give @s loot wasd.bows:ice
+    loot give @s loot wasd.bows:lightning
+    loot give @s loot wasd.bows:honey
+    loot give @s loot wasd.bows:slime
+    loot give @s loot wasd.bows:firework
+    loot give @s loot wasd.bows:tnt
+    loot give @s loot wasd.bows:critical
+    loot give @s loot wasd.bows:rainbow
+    loot give @s loot wasd.bows:quartz
+    loot give @s loot wasd.bows:prismarine
+    loot give @s loot wasd.bows:shulker
+    loot give @s loot wasd.bows:chorus
+    loot give @s loot wasd.bows:no_gravity
+    loot give @s loot wasd.bows:angel
+    loot give @s loot wasd.bows:glowstone
+    loot give @s loot wasd.bows:wither
+    loot give @s loot wasd.bows:emerald
+    loot give @s loot wasd.bows:sniper
+    loot give @s loot wasd.bows:short
+    loot give @s loot wasd.bows:random
+    loot give @s loot wasd.bows:armor_piercing
+    loot give @s loot wasd.bows:bee
+    loot give @s loot wasd.bows:bridging
+    loot give @s loot wasd.bows:builder
+    loot give @s loot wasd.bows:shooting_star
+    loot give @s loot wasd.bows:squid
+    loot give @s loot wasd.bows:long_range
+    loot give @s loot wasd.bows:slow
+    loot give @s loot wasd.bows:master_builder
+    loot give @s loot wasd.bows:bouncy
+    loot give @s loot wasd.bows:anvil
+}
+
+function give_item_box{
+    setblock ~ ~ ~ minecraft:white_shulker_box
+    loot insert ~ ~ ~ loot wasd.bows:ice
+    loot insert ~ ~ ~ loot wasd.bows:lightning
+    loot insert ~ ~ ~ loot wasd.bows:honey
+    loot insert ~ ~ ~ loot wasd.bows:slime
+    loot insert ~ ~ ~ loot wasd.bows:firework
+    loot insert ~ ~ ~ loot wasd.bows:tnt
+    loot insert ~ ~ ~ loot wasd.bows:critical
+    loot insert ~ ~ ~ loot wasd.bows:rainbow
+    loot insert ~ ~ ~ loot wasd.bows:quartz
+    loot insert ~ ~ ~ loot wasd.bows:prismarine
+    loot insert ~ ~ ~ loot wasd.bows:shulker
+    loot insert ~ ~ ~ loot wasd.bows:chorus
+    loot insert ~ ~ ~ loot wasd.bows:no_gravity
+    loot insert ~ ~ ~ loot wasd.bows:angel
+    loot insert ~ ~ ~ loot wasd.bows:glowstone
+    loot insert ~ ~ ~ loot wasd.bows:wither
+    loot insert ~ ~ ~ loot wasd.bows:emerald
+    loot insert ~ ~ ~ loot wasd.bows:sniper
+    loot insert ~ ~ ~ loot wasd.bows:short
+    loot insert ~ ~ ~ loot wasd.bows:random
+    loot insert ~ ~ ~ loot wasd.bows:armor_piercing
+    loot insert ~ ~ ~ loot wasd.bows:bee
+    loot insert ~ ~ ~ loot wasd.bows:bridging
+    loot insert ~ ~ ~ loot wasd.bows:builder
+    loot insert ~ ~ ~ loot wasd.bows:shooting_star
+    loot insert ~ ~ ~ loot wasd.bows:squid
+    loot insert ~ ~ ~ loot wasd.bows:long_range
+}
+function give_item_box2{
+    setblock ~ ~ ~ minecraft:white_shulker_box
+    loot insert ~ ~ ~ loot wasd.bows:slow
+    loot insert ~ ~ ~ loot wasd.bows:master_builder
+    loot insert ~ ~ ~ loot wasd.bows:bouncy
+    loot insert ~ ~ ~ loot wasd.bows:anvil
+
+}
+
+
+function item_recipes{
+    recipe give @s wasd.bows:ice
+    recipe give @s wasd.bows:lightning
+    recipe give @s wasd.bows:honey
+    recipe give @s wasd.bows:slime
+    recipe give @s wasd.bows:firework
+    recipe give @s wasd.bows:tnt
+    recipe give @s wasd.bows:critical
+    recipe give @s wasd.bows:rainbow
+    recipe give @s wasd.bows:quartz
+    recipe give @s wasd.bows:prismarine
+    recipe give @s wasd.bows:shulker
+    recipe give @s wasd.bows:chorus
+    recipe give @s wasd.bows:no_gravity
+    recipe give @s wasd.bows:glowstone
+    recipe give @s wasd.bows:emerald
+    recipe give @s wasd.bows:sniper
+    recipe give @s wasd.bows:short
+    recipe give @s wasd.bows:wither
+    recipe give @s wasd.bows:armor_piercing
+    recipe give @s wasd.bows:random
+    recipe give @s wasd.bows:bee
+    recipe give @s wasd.bows:builder
+    recipe give @s wasd.bows:bridging
+    recipe give @s wasd.bows:squid
+    recipe give @s wasd.bows:shooting_star
+    recipe give @s wasd.bows:angel
+    recipe give @s wasd.bows:long_range
+    recipe give @s wasd.bows:slow
+    recipe give @s wasd.bows:master_builder
+    recipe give @s wasd.bows:bouncy
+    recipe give @s wasd.bows:anvil
+}
+
+
+function determine_bow{
+    execute if predicate wasd.bows:holding_item/custom_bow run block{
+        scoreboard players reset @s wasd.bow_type
+        execute store result score @s wasd.bow_type run data get entity @s SelectedItem.components."minecraft:custom_model_data".floats[0]
+
+        execute as @s[scores={wasd.bow_type=6370101}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.ice","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:101b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370102}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.lightning","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:102b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370103}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.honey","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:103b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370104}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.slime","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:104b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370105}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.firework","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:105b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370106}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.tnt","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:106b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370107}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.critical","wasd.custom_arrow"],damage:1.5d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:107b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370108}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.rainbow","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:108b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370109}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.quartz","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:109b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370110}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.prismarine","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:110b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370111}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.shulker","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:111b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370112}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.chorus","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:112b,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370113}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,NoGravity:1b,Color:-1,Tags:["wasd.no_gravity","wasd.custom_arrow"]}
+        execute as @s[scores={wasd.bow_type=6370114}] run block{
+            execute as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.angel","wasd.custom_arrow"]}
+            effect give @s levitation 4 0 true
+            }
+        execute as @s[scores={wasd.bow_type=6370115}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.glowstone","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:115,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370116}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.wither","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:wither",amplifier:2,duration:70}]}}}}
+        execute as @s[scores={wasd.bow_type=6370117}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.emerald","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:117,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370118}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.sniper","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:118,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370119}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.short","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:119,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370120}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.random","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:120,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370121}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.armor_piercing","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:121,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370122}] run function wasd.bows:bows/bee
+        execute as @s[scores={wasd.bow_type=6370123}] run function wasd.bows:bows/bridging
+        execute as @s[scores={wasd.bow_type=6370124}] as @s[nbt={Inventory:[{Slot:-106b}]}] run block{
+            execute as @s[nbt={Inventory:[{Slot:-106b,id:"minecraft:sand"}]}] run tag @s add wasd.shot_sand_builder_bow
+            tag @s add wasd.shot_builder_bow
+            function wasd.bows:bows/builder
+            tag @s remove wasd.shot_builder_bow
+            tag @s remove wasd.shot_sand_builder_bow
+            tag @s remove wasd.invalid_ammo_bb
+        }
+        execute as @s[scores={wasd.bow_type=6370129}] as @s[nbt={Inventory:[{Slot:-106b}]}] run block{
+            execute as @s[nbt={Inventory:[{Slot:-106b,id:"minecraft:sand"}]}] run tag @s add wasd.shot_sand_builder_bow
+            tag @s add wasd.shot_builder_bow
+            function wasd.bows:bows/master_builder
+            tag @s remove wasd.shot_builder_bow
+            tag @s remove wasd.shot_sand_builder_bow
+            tag @s remove wasd.invalid_ammo_bb
+        }
+        execute as @s[scores={wasd.bow_type=6370125}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.shooting_star","wasd.custom_arrow"],item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:125,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+        execute as @s[scores={wasd.bow_type=6370126}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.squid","wasd.custom_arrow"],damage:0.1d,item:{components:{"minecraft:potion_contents":{custom_effects:[{id:"minecraft:unluck",amplifier:126,duration:10000,show_particles:0b,show_icon:0b,ambient:0b}]}}}}
+
+        execute as @s[scores={wasd.bow_type=6370127}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.long_range","wasd.custom_arrow"]}
+        execute as @s[scores={wasd.bow_type=6370128}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.slow","wasd.custom_arrow"]}
+        execute as @s[scores={wasd.bow_type=6370130}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.bouncy","wasd.custom_arrow"]}
+        execute as @s[scores={wasd.bow_type=6370131}] as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run data merge entity @s {life:1200,Color:-1,Tags:["wasd.anvil","wasd.custom_arrow"]}
+    }
+    scoreboard players reset @s wasd.shoot_bow
+}
+
+
+function determine_arrow{
+    execute as @s[tag=wasd.ice] if score particles w.bows_settings matches 1 run particle minecraft:poof ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+    execute as @s[tag=wasd.honey] if score particles w.bows_settings matches 1 run particle minecraft:falling_nectar ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.slime] if score particles w.bows_settings matches 1 run particle minecraft:item_slime ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+    execute as @s[tag=wasd.critical] if score particles w.bows_settings matches 1 run particle dust{color:[0.839, 0.957, 1.0], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 1 force
+    execute as @s[tag=wasd.quartz] if score particles w.bows_settings matches 1 run particle block{block_state:{Name:"minecraft:quartz_block"}} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.prismarine] if score particles w.bows_settings matches 1 run particle minecraft:rain ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.shulker] if score particles w.bows_settings matches 1 run particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+    execute as @s[tag=wasd.chorus] if score particles w.bows_settings matches 1 run particle minecraft:dragon_breath ~ ~ ~ 0.1 0.1 0.1 0.02 10 force
+    execute as @s[tag=wasd.glowstone] if score particles w.bows_settings matches 1 run particle dust{color:[0.941, 0.741, 0.196], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.wither] if score particles w.bows_settings matches 1 run particle dust{color:[0.290, 0.290, 0.290], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.emerald] if score particles w.bows_settings matches 1 run particle minecraft:happy_villager ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    execute as @s[tag=wasd.armor_piercing] if score particles w.bows_settings matches 1 run particle dust{color:[0.071, 0.969, 1.000], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+    execute as @s[tag=wasd.angel] if score particles w.bows_settings matches 1 run block{
+        particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.02 2 force
+        particle dust_color_transition{from_color:[1.000,0.000,0.000],scale:2,to_color:[0.973, 0.51, 0.51]} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+    }
+    execute as @s[tag=wasd.lightning] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.851, 0.306, 0.776], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 10 force
+        execute as @s[nbt={inGround:1b}] run summon minecraft:lightning_bolt
+        execute as @s[nbt={inGround:1b}] run tag @e[distance=..3,type=#wasd.tags:mobs_player] add wasd.electric_stunned
+        execute as @s[nbt={inGround:1b}] run tag @e[distance=..3,type=#wasd.tags:mobs_player] add wasd.lib_entity_tick
+
+    }
+
+    execute as @s[tag=wasd.firework] run block{
+        execute if score particles w.bows_settings matches 1 run particle minecraft:firework ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+        execute as @s[nbt={inGround:1b}] positioned ~ ~1 ~ run function wasd.abilities:firework_explosion
+    }
+    execute as @s[tag=wasd.tnt] run block{
+        execute if score particles w.bows_settings matches 1 run particle minecraft:smoke ~ ~ ~ 0.1 0.1 0.1 0.05 5 force
+        execute if score particles w.bows_settings matches 1 run particle minecraft:flame ~ ~ ~ 0.1 0.1 0.1 0.05 5 force
+        execute as @s[nbt={inGround:1b}] run summon minecraft:creeper ~ ~-1000 ~ {Tags:["wasd.tnt"],Silent:1b,ExplosionRadius:1b,Fuse:0,ignited:1b,CustomName:'{"text":"TNT Bow"}'}
+        execute as @s[nbt={inGround:1b}] positioned ~ ~-1000 ~ as @e[type=creeper,tag=wasd.tnt,sort=nearest,limit=1] run tp @s ~ ~1001 ~
+    }
+
+    execute as @s[tag=wasd.rainbow] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 0.098, 0.098], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 1.000, 0.090], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.220, 1.000, 0.325], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.212, 1.000, 1.000], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.251, 0.302, 1.000], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 0.259, 1.000], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 0.620, 0.847], scale:2.0} ~ ~ ~ 0.15 0.15 0.15 1 1 force
+    }
+
+    execute as @s[tag=wasd.no_gravity] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.357, 0.671, 0.851], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 10 force
+        scoreboard players add @s wasd.timer 1
+        execute as @s[scores={wasd.timer=600}] at @s run kill @s
+    }
+
+    execute as @s[tag=wasd.sniper] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.839, 0.839, 0.839], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+        scoreboard players add @s wasd.timer 1
+        execute store result score @s wasd.temp run data get entity @s damage 10
+        scoreboard players operation @s[tag=!multipled] wasd.temp -= 20 wasd.constants
+        execute as @s[scores={wasd.timer=1..}] run scoreboard players operation @s[tag=multipled] wasd.temp += 1 wasd.constants
+        execute as @s[scores={wasd.timer=5..}] run scoreboard players operation @s[tag=multipled] wasd.temp += 1 wasd.constants
+        execute as @s[scores={wasd.timer=10..}] run scoreboard players operation @s[tag=multipled] wasd.temp += 1 wasd.constants
+        execute as @s[scores={wasd.timer=15..}] run scoreboard players operation @s[tag=multipled] wasd.temp += 2 wasd.constants
+        execute as @s[scores={wasd.timer=20..}] run scoreboard players operation @s[tag=multipled] wasd.temp += 2 wasd.constants
+        execute store result entity @s damage double 0.1 run scoreboard players get @s wasd.temp
+        tag @s add multipled
+    }
+    execute as @s[tag=wasd.short] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.961, 0.863, 0.220], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+        execute store result score @s wasd.temp run data get entity @s damage 10
+        scoreboard players operation @s[tag=!multipled] wasd.temp *= 2 wasd.constants
+        execute as @s[scores={wasd.temp=60..}] run scoreboard players operation @s[tag=multipled] wasd.temp -= 3 wasd.constants
+        execute as @s[scores={wasd.temp=20..}] run scoreboard players operation @s[tag=multipled] wasd.temp -= 3 wasd.constants
+        execute as @s[scores={wasd.temp=10..}] run scoreboard players operation @s[tag=multipled] wasd.temp -= 2 wasd.constants
+        execute store result entity @s damage double 0.1 run scoreboard players get @s wasd.temp
+        tag @s add multipled
+    }
+    execute as @s[tag=wasd.random] run block{
+        execute unless score @s wasd.rng matches 1.. store result score @s wasd.rng run random value 1..4
+        execute if score @s wasd.rng matches 1 if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 0.000, 0.000], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+        execute if score @s wasd.rng matches 2 if score particles w.bows_settings matches 1 run particle dust{color:[0.000, 1.000, 0.133], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+        execute if score @s wasd.rng matches 3 if score particles w.bows_settings matches 1 run particle dust{color:[0.000, 0.235, 1.000], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+        execute if score @s wasd.rng matches 4 if score particles w.bows_settings matches 1 run particle dust{color:[1.000, 1.000, 0.000], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+    }
+
+    execute as @s[tag=wasd.builder] run block{
+        execute if score particles w.bows_settings matches 1 run particle block{block_state:{Name:"minecraft:oak_planks"}} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+
+        execute as @s[nbt={inGround:1b}] run block{
+            execute at @e[tag=wasd.build_bow_block] if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid1 = @s wasd.uuid1 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid2 = @s wasd.uuid2 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid3 = @s wasd.uuid3 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid4 = @s wasd.uuid4 run tag @e[tag=wasd.build_bow_block,limit=1,sort=nearest] add wasd.builder_bow_block_verified
+            execute as @e[tag=wasd.build_bow_block,tag=wasd.builder_bow_block_verified,limit=1,sort=nearest] align xyz positioned ~0.5 ~ ~0.5 run block{
+            tp @s ~ ~ ~
+            data merge entity @s {NoGravity:0b}
+            execute positioned ~ ~-1 ~ if block ~ ~ ~ #wasd.tags:nonsolid run block{
+                setblock ~ ~ ~ barrier keep
+                summon area_effect_cloud ~ ~ ~ {Duration:2,Tags:["wasd.temp_barrier_builder_bow","wasd.arrow_entity"]}
+            }
+        }
+
+    }
+
+
+    }
+    execute as @s[tag=wasd.bridging] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.141, 0.706, 0.0], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+        summon area_effect_cloud ^ ^ ^0 {Duration:1000,Tags:["wasd.arrow_entity","wasd.bridge_bow_block"]}
+
+    }
+    execute as @s[tag=wasd.shooting_star] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.796, 0.992, 1.0], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+        execute as @s[nbt={inGround:1b}] run summon area_effect_cloud ~ ~ ~ {Duration:100,Tags:["wasd.arrow_entity","wasd.shooting_star_location"]}
+    }
+
+    execute as @s[tag=wasd.squid] run block{
+        execute if score particles w.bows_settings matches 1 run particle squid_ink ~ ~ ~ 0.1 0.1 0.1 0.02 2 force
+        execute as @s[nbt={inGround:1b}] run function wasd.lib:affects/ink_explosion
+    }
+    
+    execute as @s[tag=wasd.long_range] run block{
+        particle dust{color:[1.0, 0.0, 0.0], scale:2.0} ~ ~ ~ 0 0 0 0 3 force
+        execute as @s[tag=!wasd.motion_changed] run block{
+            execute as @s[nbt={crit:1b}] run function wasd.bows:double_speed
+            execute as @s[nbt={crit:0b}] run function wasd.bows:half_speed
+        }
+    }
+    execute as @s[tag=wasd.slow] run block{
+        particle dust{color:[0.0, 0.431, 1.0], scale:2.0} ~ ~ ~ 0 0 0 0 3 force
+        execute as @s[tag=!wasd.motion_changed] run block{
+            function wasd.bows:half_speed
+            execute as @s[nbt={crit:1b}] run block{
+                execute store result score @s wasd.temp run data get entity @s damage 10
+                execute store result entity @s damage double 0.1 run scoreboard players operation @s wasd.temp *= 4 wasd.constants
+
+            }
+        }
+    }
+    execute as @s[tag=wasd.master_builder] run block{
+        execute if score particles w.bows_settings matches 1 run particle end_rod ~ ~ ~ 0.1 0.1 0.1 0.02 1 force
+        scoreboard players add @s wasd.timer 1
+        execute as @s[scores={wasd.timer=600}] at @s run kill @s 
+    }
+    execute as @s[tag=wasd.bouncy] run block{
+        execute if score particles w.bows_settings matches 1 run particle dust{color:[0.318, 1.0, 0.0], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+        scoreboard players operation @s wasd.pos_x2 = @s wasd.pos_x1
+        scoreboard players operation @s wasd.pos_y2 = @s wasd.pos_y1
+        scoreboard players operation @s wasd.pos_z2 = @s wasd.pos_z1
+        execute store result score @s wasd.pos_x1 run data get entity @s Motion[0] 10000
+        execute store result score @s wasd.pos_y1 run data get entity @s Motion[1] 10000
+        execute store result score @s wasd.pos_z1 run data get entity @s Motion[2] 10000
+        execute as @s[nbt={inGround:1b}] run block{
+            execute unless block ~ ~-0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.up
+            execute unless block ~ ~0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.up
+
+            execute unless block ~0.1 ~ ~ #wasd.tags:nonsolid if block ~ ~0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.east_west
+            execute unless block ~-0.1 ~ ~ #wasd.tags:nonsolid if block ~ ~0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.east_west
+        
+            execute unless block ~ ~ ~0.1 #wasd.tags:nonsolid if block ~ ~0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.north_south
+            execute unless block ~ ~ ~-0.1 #wasd.tags:nonsolid if block ~ ~0.1 ~ #wasd.tags:nonsolid run tag @s add wasd.north_south
+
+            execute as @s[tag=wasd.east_west] run scoreboard players operation @s wasd.pos_x2 *= -1 wasd.constants
+            execute as @s[tag=wasd.up] run scoreboard players operation @s wasd.pos_y2 *= -1 wasd.constants
+            execute as @s[tag=wasd.north_south] run scoreboard players operation @s wasd.pos_z2 *= -1 wasd.constants
+
+
+            execute store result entity @s Motion[0] double 0.00008 run scoreboard players get @s wasd.pos_x2
+            execute store result entity @s Motion[1] double 0.00008 run scoreboard players get @s wasd.pos_y2
+            execute store result entity @s Motion[2] double 0.00008 run scoreboard players get @s wasd.pos_z2
+
+            tag @s remove wasd.east_west
+            tag @s remove wasd.up
+            tag @s remove wasd.north_south
+            scoreboard players add @s wasd.timer 1
+            execute as @s[scores={wasd.timer=6..}] run kill @s
+
+            data merge entity @s {inGround:0b}
+        }
+
+    }
+    execute as @s[tag=wasd.anvil] run block{
+        summon armor_stand ~ ~ ~ {Invulnerable:1b,Invisible:1b,Tags:["wasd.lib_entity_tick","wasd.fake_anvil","wasd.ability","wasd.shot_by_bow"],DisabledSlots:4144959,ArmorItems:[{},{},{},{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/anvil"}}]}
+        data modify entity @e[tag=wasd.fake_anvil,sort=nearest,limit=1] Motion set from entity @s Motion
+        kill @s
+    }
+    scoreboard players set arrow_shot w.bows_settings 2
+
+}
+
+    function double_speed{
+        #get the pearls current motion
+        execute store result score @s wasd.pos_x1 run data get entity @s Motion[0] 10000
+        execute store result score @s wasd.pos_y1 run data get entity @s Motion[1] 10000
+        execute store result score @s wasd.pos_z1 run data get entity @s Motion[2] 10000
+        execute store result entity @s Motion[0] double 0.0001 run scoreboard players operation @s wasd.pos_x1 *= 2 wasd.constants
+        execute store result entity @s Motion[1] double 0.0001 run scoreboard players operation @s wasd.pos_y1 *= 2 wasd.constants
+        execute store result entity @s Motion[2] double 0.0001 run scoreboard players operation @s wasd.pos_z1 *= 2 wasd.constants
+        tag @s add wasd.motion_changed
+    }
+    function half_speed{
+        #get the pearls current motion
+        execute store result score @s wasd.pos_x1 run data get entity @s Motion[0] 10000
+        execute store result score @s wasd.pos_y1 run data get entity @s Motion[1] 10000
+        execute store result score @s wasd.pos_z1 run data get entity @s Motion[2] 10000
+        execute store result entity @s Motion[0] double 0.0001 run scoreboard players operation @s wasd.pos_x1 /= 3 wasd.constants
+        execute store result entity @s Motion[1] double 0.0001 run scoreboard players operation @s wasd.pos_y1 /= 3 wasd.constants
+        execute store result entity @s Motion[2] double 0.0001 run scoreboard players operation @s wasd.pos_z1 /= 3 wasd.constants
+        tag @s add wasd.motion_changed
+    }
+
+
+
+function as_entities{
+
+execute as @s[tag=wasd.bridging_projectile] run block{
+tp @s ^ ^ ^0.5 ~0 ~0.5
+summon area_effect_cloud ~ ~ ~ {Duration:100,Tags:["wasd.arrow_entity","wasd.bridge_bow_block"]}
+}
+
+
+
+execute as @s[tag=wasd.bridge_bow_block] run block{
+scoreboard players add @s wasd.timer 1
+execute as @s[scores={wasd.timer=1}] unless block ~ ~ ~ #wasd.tags:air run kill @s
+execute as @s[scores={wasd.timer=1}] if block ~ ~ ~ #wasd.tags:air run setblock ~ ~ ~ green_stained_glass
+execute as @s[scores={wasd.timer=40}] if block ~ ~ ~ green_stained_glass run setblock ~ ~ ~ yellow_stained_glass
+execute as @s[scores={wasd.timer=60}] if block ~ ~ ~ yellow_stained_glass run setblock ~ ~ ~ orange_stained_glass
+execute as @s[scores={wasd.timer=80}] if block ~ ~ ~ orange_stained_glass run setblock ~ ~ ~ red_stained_glass
+execute as @s[scores={wasd.timer=99}] if block ~ ~ ~ red_stained_glass run setblock ~ ~ ~ air
+
+}
+
+execute as @s[tag=wasd.shooting_star_location] run block{
+    scoreboard players add @s wasd.timer 1
+    scoreboard players add @s wasd.temp 1
+    execute as @s[scores={wasd.temp=4..}] run block{
+    scoreboard players reset @s wasd.temp
+    summon area_effect_cloud ~ ~ ~ {Duration:100,Tags:["wasd.fake_shooting_star_fireball_location"]}
+    execute as @e[type=area_effect_cloud,tag=wasd.fake_shooting_star_fireball_location,sort=nearest,limit=1] run block{
+        spreadplayers ~ ~ 0 7 false @s
+        execute at @s run summon fireball ~ 255 ~ {Motion:[0.0,-0.1,0.0],ExplosionPower:0,Item:{id:"minecraft:blackstone",Count:1b}}
+        kill @s
+}
+
+}
+
+execute as @s[scores={wasd.timer=10..}] run block{
+scoreboard players reset @s wasd.timer
+summon area_effect_cloud ~ ~ ~ {Duration:100,Tags:["wasd.shooting_star_fireball_location"]}
+execute as @e[type=area_effect_cloud,tag=wasd.shooting_star_fireball_location,sort=nearest,limit=1] run block{
+spreadplayers ~ ~ 0 7 false @s
+execute at @s run summon fireball ~ 255 ~ {Motion:[0.0,-0.1,0.0],Item:{id:"minecraft:magma_block",Count:1b},Tags:["wasd.lib_entity_tick","wasd.ability","wasd.meteor_fireball"]}
+execute at @s run particle dust{color:[1.0, 0.0, 0.0], scale:2.0} ~ ~ ~ 0.2 0.2 0.2 0 5 normal
+kill @s
+}
+}
+}
+
+execute as @s[tag=wasd.temp_barrier_builder_bow] run block{
+scoreboard players add @s wasd.timer 1
+execute as @s[scores={wasd.timer=2..}] run setblock ~ ~ ~ air
+}
+execute as @s[tag=wasd.bee_bow] run block{
+scoreboard players add @s wasd.timer 1
+execute as @s[scores={wasd.timer=1..10}] run tp @s ^ ^ ^0.5 ~ ~-1
+execute as @s[scores={wasd.timer=11..}] run tp @s ^ ^ ^0.5 ~ ~-0.1
+
+execute as @s[tag=wasd.stung] run block{
+scoreboard players add @s wasd.temp 1
+execute as @s[scores={wasd.temp=6..}] run block{
+scoreboard players reset @s wasd.temp
+tag @s remove wasd.stung
+}
+
+}
+
+execute as @s[scores={wasd.timer=100..}] run kill @s
+execute unless block ^ ^ ^0.5 #wasd.tags:nonsolid run kill @s
+execute as @s[scores={wasd.timer=10..},tag=!wasd.stung] if entity @e[type=#wasd.tags:mobs_player,distance=..2.5,type=!bee] run block{
+effect give @e[type=#wasd.tags:mobs_player,distance=..2.5,type=!bee] poison 10 2
+playsound entity.bee.sting player @a ~ ~ ~ 1 1
+tag @s add wasd.stung
+}
+}
+
+}
+
+
+function arrow_hit{
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:101b}]}] run function wasd.bows:bows/ice
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:102b}]}] run function wasd.bows:bows/lightning
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:103b}]}] run function wasd.bows:bows/honey
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:104b}]}] run function wasd.bows:bows/slime
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:105b}]}] run function wasd.bows:bows/firework
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:106b}]}] run function wasd.bows:bows/tnt
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:107b}]}] run function wasd.bows:bows/critical
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:108b}]}] run function wasd.bows:bows/rainbow
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:109b}]}] run function wasd.bows:bows/quartz
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:110b}]}] run function wasd.bows:bows/prismarine
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:111b}]}] run function wasd.bows:bows/shulker
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:112b}]}] run function wasd.bows:bows/chorus
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:115b}]}] run function wasd.bows:bows/glowstone
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:117b}]}] run function wasd.bows:bows/emerald
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:118b}]}] run function wasd.bows:bows/shared
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:119b}]}] run function wasd.bows:bows/shared
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:120b}]}] run function wasd.bows:bows/random
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:121b}]}] run function wasd.bows:bows/armor_piercing
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:125b}]}] run function wasd.bows:bows/shooting_star
+    execute as @s[nbt={active_effects:[{id:"minecraft:unluck",amplifier:126b}]}] run function wasd.bows:bows/squid
+    scoreboard players reset @s wasd.shoot_bow
+}
+
+dir bows{
+
+    function shared{
+        stopsound @a player minecraft:entity.arrow.hit
+        stopsound @a player minecraft:entity.arrow.hit_player
+        effect clear @s minecraft:unluck
+    }
+
+    function ice{
+        function wasd.bows:bows/shared
+        effect give @s minecraft:resistance 3 2 true
+        execute unless entity @s[tag=frozen] run function wasd.lib:affects/on_freeze_quarter
+    }
+    function lightning{
+        function wasd.bows:bows/shared
+        summon minecraft:lightning_bolt
+        tag @e[distance=..3,type=#wasd.tags:mobs_player] add wasd.electric_stunned
+        tag @e[distance=..3,type=#wasd.tags:mobs_player] add wasd.lib_entity_tick
+    }
+    function honey{
+        function wasd.bows:bows/shared
+        scoreboard players set @s honey_slow_timer 1
+        tag @s add wasd.lib_entity_tick
+        playsound minecraft:block.honey_block.break player @a ~ ~ ~ 1 1
+    }
+    function slime{
+        function wasd.bows:bows/shared
+        particle minecraft:item_slime ~ ~1 ~ 0.3 0.5 0.3 0.05 30
+        playsound minecraft:block.slime_block.break player @a ~ ~ ~ 1 0
+        tag @s add wasd.slime_launched_bow
+        effect give @s minecraft:levitation 1 120 true
+    }
+    function firework{
+        function wasd.bows:bows/shared
+        execute positioned ~ ~1 ~ run function wasd.abilities:firework_explosion
+    }
+    function tnt{
+        function wasd.bows:bows/shared
+        summon minecraft:creeper ~ ~-1000 ~ {Tags:["wasd.tnt"],Silent:1b,ExplosionRadius:1b,Fuse:0,ignited:1b,CustomName:'{"text":"TNT Bow"}'}
+        execute positioned ~ ~-1000 ~ as @e[type=creeper,tag=wasd.tnt,sort=nearest,limit=1] run tp @s ~ ~1001 ~
+    }
+    function critical{
+        function wasd.bows:bows/shared
+        execute store result score @s wasd.rng run random value 1..6
+        execute if score @s wasd.rng matches 1 run damage @s 16 minecraft:arrow
+        execute if score @s wasd.rng matches 1 run playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 10 0.5
+        execute if score @s wasd.rng matches 1 run particle minecraft:flash ~ ~1 ~
+    }
+    function rainbow{
+        function wasd.bows:bows/shared
+        function wasd.lib:affects/drop_rainbow_dye
+    }
+    function quartz{
+        function wasd.bows:bows/shared
+        execute if dimension minecraft:the_nether run damage @s 8 minecraft:arrow by @p
+        execute if dimension minecraft:the_nether run playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 10 0.5
+        execute if dimension minecraft:the_nether run particle minecraft:composter ~ ~1 ~ 0.3 0.5 0.3 1 50
+    }
+    function prismarine{
+        function wasd.bows:bows/shared
+        execute if block ~ ~ ~ water run damage @s 8 minecraft:arrow by @p
+        execute if block ~ ~ ~ water run playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 10 0.5
+        execute if block ~ ~ ~ water run particle minecraft:composter ~ ~1 ~ 0.3 0.5 0.3 1 50
+    }
+    function shulker{
+        function wasd.bows:bows/shared
+        particle minecraft:end_rod ~ ~1 ~ 0.3 0.5 0.3 0.05 30
+        effect give @s minecraft:levitation 4 1 true
+        playsound minecraft:entity.shulker_bullet.hit player @a ~ ~ ~ 10 1
+    }
+    function chorus{
+        function wasd.bows:bows/shared
+        execute store result score @s wasd.rng run random value 1..3
+        execute if score @s wasd.rng matches 3 run function wasd.lib:affects/enderman_teleport
+    }
+    function glowstone{
+        function wasd.bows:bows/shared
+        effect give @s minecraft:glowing 10 0 true
+        particle minecraft:flash ~ ~1 ~
+        playsound minecraft:block.beacon.activate player @a ~ ~ ~ 1 2
+    }
+    function emerald{
+        function wasd.bows:bows/shared
+        execute as @s[type=#minecraft:raiders] run damage @s 8 minecraft:arrow by @p
+        execute as @s[type=#minecraft:raiders] run playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 10 0.5
+        execute as @s[type=#minecraft:raiders] run particle minecraft:composter ~ ~1 ~ 0.3 0.5 0.3 1 50
+    }
+    function random{
+        function wasd.bows:bows/shared
+        execute store result score @s wasd.rng run random value 1..4
+        execute if score @s wasd.rng matches 1 if score particles bows_settings matches 1 run particle dust{color:[1.000, 0.000, 0.000], scale:2.0} ~ ~1 ~ 0.3 1 0.3 0 30 force
+        execute if score @s wasd.rng matches 2 if score particles bows_settings matches 1 run particle dust{color:[0.000, 1.000, 0.133], scale:2.0} ~ ~1 ~ 0.3 1 0.3 0 30 force
+        execute if score @s wasd.rng matches 3 if score particles bows_settings matches 1 run particle dust{color:[0.000, 0.235, 1.000], scale:2.0} ~ ~1 ~ 0.3 1 0.3 0 30 force
+        execute if score @s wasd.rng matches 4 if score particles bows_settings matches 1 run particle dust{color:[1.000, 1.000, 0.000], scale:2.0} ~ ~1 ~ 0.3 1 0.3 0 30 force
+        execute if score @s wasd.rng matches 1 run effect give @s minecraft:poison 10 1
+        execute if score @s wasd.rng matches 2 run effect give @s minecraft:regeneration 10 1
+        execute if score @s wasd.rng matches 3 run effect give @s minecraft:instant_damage 1 1
+        execute if score @s wasd.rng matches 4 run effect give @s minecraft:instant_health 1 1
+    }
+    function armor_piercing{
+        function wasd.bows:bows/shared
+        execute if entity @s[type=minecraft:player] as @s[nbt={Inventory:[{Slot:100b}]}] run tag @s add wasd.has_armor
+        execute if entity @s[type=minecraft:player] as @s[nbt={Inventory:[{Slot:101b}]}] run tag @s add wasd.has_armor
+        execute if entity @s[type=minecraft:player] as @s[nbt={Inventory:[{Slot:102b}]}] run tag @s add wasd.has_armor
+        execute if entity @s[type=minecraft:player] as @s[nbt={Inventory:[{Slot:103b}]}] run tag @s add wasd.has_armor
+        execute if data entity @s ArmorItems[].id run tag @s add wasd.has_armor
+        execute as @s[tag=wasd.has_armor] run damage @s 4 minecraft:generic
+        execute as @s[tag=wasd.has_armor] run playsound minecraft:entity.player.attack.crit player @a ~ ~ ~ 10 0.5
+        execute as @s[tag=wasd.has_armor] run particle minecraft:composter ~ ~1 ~ 0.3 0.5 0.3 1 50
+        tag @s remove wasd.hard_armor
+    }
+    function shooting_star{
+        function wasd.bows:bows/shared
+    }
+
+    function squid{
+        function wasd.bows:bows/shared
+        function wasd.lib:affects/ink_explosion
+    }
+    function bee{
+        execute anchored eyes positioned ^ ^ ^0.1 run summon bee ~ ~ ~ {Invulnerable:1b,NoAI:1b,Tags:["wasd.arrow_entity","wasd.bee_bow"]}
+        execute anchored eyes positioned ^ ^ ^0.1 run tp @e[tag=wasd.arrow_entity,tag=wasd.bee_bow,limit=1,sort=nearest] ~ ~-0.3 ~ ~ ~
+        kill @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}]
+    }
+    function bridging{
+        summon area_effect_cloud ~ ~ ~ {Duration:100,Tags:["wasd.arrow_entity","wasd.bridging_projectile"]}
+        tp @e[tag=wasd.arrow_entity,tag=wasd.bridging_projectile,limit=1,sort=nearest] ~ ~-0.3 ~ ~ ~
+        kill @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}]
+    }
+
+    function builder{
+        execute as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run block{
+            data merge entity @s {life:1200,Tags:["wasd.builder","wasd.custom_arrow"],damage:0.1d}
+            function wasd.lib:util/uuid_to_scoreboard
+        }
+
+        summon falling_block ~ -64 ~ {BlockState:{Name:"minecraft:stone"},NoGravity:1b,Time:1,Tags:["wasd.build_bow_block"]}
+        function wasd.lib:util/get_last_slot
+        execute positioned ~ -64 ~ as @e[type=falling_block,tag=wasd.build_bow_block,tag=!wasd.modified,limit=1,sort=nearest] run block{
+            tag @s add wasd.modified
+            data modify entity @s BlockState.Name set from storage minecraft:wasd.temp inventory[0].id
+            execute at @p[tag=wasd.shot_builder_bow] at @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] run block{
+                scoreboard players operation @s wasd.uuid1 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid1
+                scoreboard players operation @s wasd.uuid2 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid2
+                scoreboard players operation @s wasd.uuid3 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid3
+                scoreboard players operation @s wasd.uuid4 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid4
+            }
+            execute as @s[nbt={BlockState:{Name:"minecraft:sand"}}] unless entity @a[tag=wasd.shot_sand_builder_bow] run block{
+                execute as @a[tag=wasd.shot_builder_bow] run tag @s add wasd.invalid_ammo_bb
+                kill @s
+            }
+        }
+        execute as @s[tag=!wasd.invalid_ammo_bb,gamemode=!creative] run item modify entity @s weapon.offhand wasd.lib:remove1
+
+    }
+      
+    function master_builder{
+        execute as @e[type=minecraft:arrow,sort=nearest,limit=1,tag=!wasd.custom_arrow,tag=!wasd.custom_crossbow_arrow,nbt=!{ShotFromCrossbow:0b,inGround:1b,pickup:0b}] run block{
+            data merge entity @s {life:1200,Tags:["wasd.builder","wasd.master_builder","wasd.custom_arrow"],NoGravity:1b,damage:0.1d}
+            function wasd.lib:util/uuid_to_scoreboard
+        }
+        summon falling_block ~ -64 ~ {BlockState:{Name:"minecraft:stone"},NoGravity:1b,Time:1,Tags:["wasd.build_bow_block"]}
+        function wasd.lib:util/get_last_slot
+        execute positioned ~ -64 ~ as @e[type=falling_block,tag=wasd.build_bow_block,tag=!wasd.modified,limit=1,sort=nearest] run block{
+            tag @s add wasd.modified
+            data modify entity @s BlockState.Name set from storage minecraft:wasd.temp inventory[0].id
+            execute at @p[tag=wasd.shot_builder_bow] at @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] run block{
+                scoreboard players operation @s wasd.uuid1 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid1
+                scoreboard players operation @s wasd.uuid2 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid2
+                scoreboard players operation @s wasd.uuid3 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid3
+                scoreboard players operation @s wasd.uuid4 = @e[type=arrow,tag=wasd.builder,sort=nearest,limit=1] wasd.uuid4
+            }
+            execute as @s[nbt={BlockState:{Name:"minecraft:sand"}}] unless entity @a[tag=wasd.shot_sand_builder_bow] run block{
+                execute as @a[tag=wasd.shot_builder_bow] run tag @s add wasd.invalid_ammo_bb
+                kill @s
+            }
+        }
+        execute as @s[tag=!wasd.invalid_ammo_bb,gamemode=!creative] run item modify entity @s weapon.offhand wasd.lib:remove1
+    }
+}
+
+
+

@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stone_sword",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Mycelium Sword\",\"translate\":\"wasd.sword.mycelium\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Gives nausea to the target.\",\"translate\": \"wasd.sword.mycelium.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:item_model": "wasd:swords/mycelium",
+                                "minecraft:max_damage": 59,
+                                "repairable": {"items": "mycelium"},
+                                "minecraft:custom_data": {
+                                    "wasd_sword": 1,
+                                    "wasd.sword_type": 102
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "minecraft:attack_damage",
+                                            "id": "6370001",
+                                            "amount": 4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        },
+                                        {
+                                            "type": "minecraft:attack_speed",
+                                            "id": "6370001",
+                                            "amount": -2.4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

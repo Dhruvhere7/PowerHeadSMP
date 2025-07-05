@@ -1,0 +1,3 @@
+#mc-build WASD content
+execute at @e[tag=wasd.build_bow_block] if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid1 = @s wasd.uuid1 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid2 = @s wasd.uuid2 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid3 = @s wasd.uuid3 if score @e[tag=wasd.build_bow_block,limit=1,sort=nearest] wasd.uuid4 = @s wasd.uuid4 run tag @e[tag=wasd.build_bow_block,limit=1,sort=nearest] add wasd.builder_bow_block_verified
+execute as @e[tag=wasd.build_bow_block,tag=wasd.builder_bow_block_verified,limit=1,sort=nearest] align xyz positioned ~0.5 ~ ~0.5 run function wasd.bows:zzz/16

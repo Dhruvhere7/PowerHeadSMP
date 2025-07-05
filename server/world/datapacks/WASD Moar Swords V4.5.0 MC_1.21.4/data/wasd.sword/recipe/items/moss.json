@@ -1,0 +1,49 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "plant_swords",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:moss_block"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Moss Sword\",\"translate\":\"wasd.sword.moss\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Randomly places moss carpets.\",\"translate\": \"wasd.sword.moss.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/moss",
+            "minecraft:max_damage": 59,
+            "repairable": {"items": "moss_block"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 106
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 3,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

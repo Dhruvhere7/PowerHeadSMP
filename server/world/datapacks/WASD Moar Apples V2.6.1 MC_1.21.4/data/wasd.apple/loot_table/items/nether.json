@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_apple",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Nether Apple\",\"translate\":\"wasd.apples.nether\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Leave a trail of fire behind you.\",\"translate\": \"wasd.apples.nether.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_apple_type": 11,
+                                    "wasd_apple": 1
+                                },
+                                "minecraft:item_model": "wasd:apples/nether"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

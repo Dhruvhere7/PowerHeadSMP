@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:fishing_rod"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Troll Pearl\",\"translate\":\"wasd.pearls.troll\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Punch a mob to mark it. The pearl now teleports it instead of you.\",\"translate\":\"wasd.pearls.troll.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 24,
+                "wasd_pearl": 1,
+                "stored_UUID": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "minecraft:item_model": "wasd:pearl/troll"
+        }
+    }
+}

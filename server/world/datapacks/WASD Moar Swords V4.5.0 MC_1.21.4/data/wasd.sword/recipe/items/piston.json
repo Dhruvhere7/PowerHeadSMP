@@ -1,0 +1,60 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        " A ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:sticky_piston",
+        "A": "minecraft:piston"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Piston Sword\",\"translate\":\"wasd.sword.piston\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Deals High Knockback.\",\"translate\": \"wasd.sword.piston.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/piston",
+            "minecraft:max_damage": 250,
+            "repairable": {"items": "piston"},
+            "minecraft:enchantment_glint_override": false,
+            "enchantments": {
+                "minecraft:knockback": 3
+            },
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 19
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 3,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:entity_interaction_range",
+                        "id": "6370001",
+                        "amount": 1.25,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

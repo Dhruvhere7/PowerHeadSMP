@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:gold_nugget",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Power Ring 2\",\"translate\":\"wasd.rings.ring_2\",\"italic\":false,\"color\":\"yellow\"}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Increased attack damage at the cost of mining speed.\",\"translate\":\"wasd.rings.ring_2.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "max_stack_size": 1,
+                                "minecraft:custom_data": {
+                                    "wasd_ring_type": 2,
+                                    "wasd_ring": 1
+                                },
+                                "minecraft:item_model": "wasd:rings/2"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

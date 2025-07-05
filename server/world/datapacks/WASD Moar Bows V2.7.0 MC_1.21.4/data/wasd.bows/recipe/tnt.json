@@ -1,0 +1,38 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:gunpowder",
+        "$": "minecraft:tnt",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.tnt\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.tnt.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370106
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/tnt",
+            "repairable": {
+                "items": "tnt"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

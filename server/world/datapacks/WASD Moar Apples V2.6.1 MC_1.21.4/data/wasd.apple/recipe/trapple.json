@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_apples",
+    "ingredients": [
+        "minecraft:apple",
+        "minecraft:iron_sword"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"item.minecraft.apple\", \"italic\":false, \"color\":white}",
+            "minecraft:custom_data": {
+                "wasd_apple_type": 15,
+                "wasd_apple": 1
+            }
+        }
+    }
+}

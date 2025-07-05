@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_apples",
+    "pattern": [
+        "XXX",
+        "XAX",
+        "XXX"
+    ],
+    "key": {
+        "X": "minecraft:gunpowder",
+        "A": "minecraft:golden_apple"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"TNT Apple\",\"translate\":\"wasd.apples.tnt\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Cause a powerful explosion instantly.\",\"translate\": \"wasd.apples.tnt.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_apple_type": 14,
+                "wasd_apple": 1
+            },
+            "minecraft:item_model": "wasd:apples/tnt"
+        }
+    }
+}

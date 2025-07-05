@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:egg"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Infested Pearl\",\"translate\":\"wasd.pearls.infested\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Flies with no gravity.\",\"translate\":\"wasd.pearls.infested.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 4,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/infested"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:dragon_breath"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Dragon's Breath Pearl\",\"translate\":\"wasd.pearls.dragon\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Causes a dragon's breath explosion at where it was thrown from.\",\"translate\":\"wasd.pearls.dragon.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 13,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/dragons_breath"
+        }
+    }
+}

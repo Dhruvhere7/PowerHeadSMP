@@ -1,0 +1,3 @@
+#mc-build WASD content
+summon ender_pearl ~ ~ ~ {Owner:[I;0,0,0,0],Tags:["wasd.honey","wasd.custom_pearl"],wasd_pearl:1b,Passengers:[{id:"minecraft:snowball",Tags:["wasd.honey_ball","wasd.custom_pearl"],Owner:[I;0,0,0,0],Item:{id:"minecraft:gold_nugget",count:1,components:{"minecraft:item_model": "wasd:blank"}}}],Item:{id:"minecraft:ender_pearl",count:1,components:{"minecraft:item_model": "wasd:pearl/honey"}}}
+tag @s add wasd.temp_honey_pearl

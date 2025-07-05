@@ -1,0 +1,38 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "$B#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:slime_ball",
+        "$": "minecraft:slime_block",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.slime\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.slime.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370104
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/slime",
+            "repairable": {
+                "items": "slime_ball"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

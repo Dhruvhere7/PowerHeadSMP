@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_apple",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Spectator Apple\",\"translate\":\"wasd.apples.spectator\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Eat for 10 seconds of spectator mode.\",\"translate\": \"wasd.apples.spectator.lore\", \"italic\":false, \"color\":blue}",
+                                    "{\"fallback\":\"Returns you to your original position.\",\"translate\": \"wasd.apples.spectator.lore2\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_apple_type": 1,
+                                    "wasd_apple": 1
+                                },
+                                "minecraft:item_model": "wasd:apples/spectator"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "parent": "wasd.bosses:pack",
+  "display": {
+    "icon": {
+      "id": "minecraft:clay_ball",
+      "components": {
+        "minecraft:item_model": "wasd:recipes/bosses/water"
+      }
+    },
+    "title": "Water Boss   ",
+    "description": "\nSpawns In:\n   River\n   Beach\n   Ice Spikes\n   Snowy Plains\n   Snowy Taiga\n   All Ocean Biomes\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}
+

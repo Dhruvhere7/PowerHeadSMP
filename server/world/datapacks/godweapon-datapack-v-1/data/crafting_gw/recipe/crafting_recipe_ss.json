@@ -1,0 +1,47 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "#E#",
+        "NSN",
+        "TLT"
+    ],
+    "key": {
+        "#": [
+            "minecraft:emerald_block"
+        ],
+        "E": [
+            "minecraft:leather_helmet"
+        ],
+        "N": [
+            "minecraft:slime_ball"
+        ],
+        "S": [
+            "minecraft:slime_block"
+        ],
+        "T": [
+            "minecraft:diamond_block"
+        ],
+        "L": [
+            "minecraft:leather_boots"
+        ]
+    },
+    "result": {
+        "id": "minecraft:golden_apple",
+        "components": {
+          "minecraft:custom_model_data": {
+            "strings": [
+              "ss_token"
+            ]
+          },
+          "minecraft:custom_data": {
+            "ss_token": true,
+            "gw_token": true,
+            "crafted_token": true
+          },
+          "minecraft:custom_name": "\"Slimy Steppers Token\"",
+          "minecraft:rarity": "epic"
+        },
+        "count": 1
+      }
+}

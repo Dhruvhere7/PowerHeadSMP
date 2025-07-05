@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Meteor Wand\",\"translate\":\"wasd.wands.meteor\",\"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"Pulls down a meteor where you aimed.\",\"translate\":\"wasd.wands.meteor.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_wand_type": 2,
+                "wasd_wand": 1
+            },
+            "minecraft:item_model": "wasd:wands/meteor"
+        }
+    }
+}

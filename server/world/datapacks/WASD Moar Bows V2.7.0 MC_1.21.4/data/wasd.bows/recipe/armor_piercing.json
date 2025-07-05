@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_bows",
+    "category": "equipment",
+    "pattern": [
+        " ##",
+        "$B#",
+        " ##"
+    ],
+    "key": {
+        "#": "minecraft:diamond",
+        "$": "minecraft:diamond_block",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.armor_piercing\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.armor_piercing.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370121
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/armor_piercing",
+            "repairable": {
+                "items": "diamond"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

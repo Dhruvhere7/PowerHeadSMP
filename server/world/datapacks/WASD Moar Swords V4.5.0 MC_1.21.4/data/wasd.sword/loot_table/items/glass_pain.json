@@ -1,0 +1,51 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stone_sword",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Glass Pain Sword\",\"translate\":\"wasd.sword.glass_pain\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Deals super high damage,\",\"translate\": \"wasd.sword.glass_pain.lore\", \"italic\":false, \"color\":blue}",
+                                    "{\"fallback\":\"but breaks very quickly.\",\"translate\": \"wasd.sword.glass_pain.lore2\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:item_model": "wasd:swords/glass_pain",
+                                "minecraft:max_damage": 3,
+                                "repairable": {"items": "glass_pane"},
+                                "minecraft:repair_cost": 9999,
+                                "minecraft:custom_data": {
+                                    "wasd_sword": 1,
+                                    "wasd.sword_type": 70
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "minecraft:attack_damage",
+                                            "id": "6370001",
+                                            "amount": 12,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        },
+                                        {
+                                            "type": "minecraft:attack_speed",
+                                            "id": "6370001",
+                                            "amount": -2.4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

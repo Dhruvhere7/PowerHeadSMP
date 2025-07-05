@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:ender_pearl",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Fireball Pearl\",\"translate\":\"wasd.pearls.fireball\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Causes an explosion where it lands.\",\"translate\":\"wasd.pearls.fireball.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_pearl_type": 16,
+                                    "wasd_pearl": 1
+                                },
+                                "minecraft:item_model": "wasd:pearl/fireball"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:gold_nugget",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Heart Ring 2\",\"translate\":\"wasd.rings.ring_11\",\"italic\":false,\"color\":\"red\"}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Health regeneration.\",\"translate\":\"wasd.rings.ring_11.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "max_stack_size": 1,
+                                "minecraft:custom_data": {
+                                    "wasd_ring_type": 11,
+                                    "wasd_ring": 1
+                                },
+                                "minecraft:item_model": "wasd:rings/11"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

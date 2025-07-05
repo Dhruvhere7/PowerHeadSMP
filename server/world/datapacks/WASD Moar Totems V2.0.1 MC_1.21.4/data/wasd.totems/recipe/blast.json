@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        "ABA",
+        "BTB",
+        "ABA"
+    ],
+    "key": {
+        "T": "minecraft:totem_of_undying",
+        "A": "minecraft:tnt",
+        "B": "minecraft:firework_star"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:totem_of_undying",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Blast Totem\",\"translate\":\"wasd.totems.blast\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Causes an explosion when it gets activated.\",\"translate\":\"wasd.totems.blast.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_totem_type": 6,
+                "wasd_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/blast"
+        }
+    }
+}

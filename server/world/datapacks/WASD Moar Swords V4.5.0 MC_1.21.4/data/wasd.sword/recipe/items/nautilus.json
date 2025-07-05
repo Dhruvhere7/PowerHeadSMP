@@ -1,0 +1,49 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "water_swords",
+    "category": "equipment",
+    "pattern": [
+        " E ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:nautilus_shell"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Nautilus Sword\",\"translate\":\"wasd.sword.nautilus\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"More Powerful in Water.\",\"translate\": \"wasd.sword.nautilus.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/nautilus",
+            "minecraft:max_damage": 1561,
+            "repairable": {"items": "nautilus_shell"},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 37
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

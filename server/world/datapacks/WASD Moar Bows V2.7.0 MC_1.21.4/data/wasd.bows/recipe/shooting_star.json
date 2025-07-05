@@ -1,0 +1,39 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " $#",
+        "AB#",
+        " $#"
+    ],
+    "key": {
+        "#": "minecraft:netherite_scrap",
+        "$": "minecraft:diamond",
+        "A": "minecraft:nether_star",
+        "B": "minecraft:bow"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.shooting_star\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.shooting_star.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370125
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/shooting_star",
+            "repairable": {
+                "items": "netherite_scrap"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

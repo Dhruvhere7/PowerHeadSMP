@@ -1,0 +1,24 @@
+{
+  "parent": "wasd.bosses:air",
+  "display": {
+    "icon": {
+      "id": "minecraft:clay_ball",
+      "components": {
+        "minecraft:item_model": "wasd:recipes/bosses/lightning"
+      }
+    },
+    "title": "Electric Boss ",
+    "description": "\nSpawns In:\n   Badlands\n   Desert\n   Eroded Badlands\n   Savanna\n   Savanna Plateau\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}
+
+

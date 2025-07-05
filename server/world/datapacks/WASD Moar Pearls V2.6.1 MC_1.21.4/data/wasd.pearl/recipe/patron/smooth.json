@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_pearls_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Smooth Pearl\",\"translate\":\"wasd.pearls.smooth\",\"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"When thrown, you ride it as it flies.\",\"translate\":\"wasd.pearls.smooth.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 28,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/smooth"
+        }
+    }
+}

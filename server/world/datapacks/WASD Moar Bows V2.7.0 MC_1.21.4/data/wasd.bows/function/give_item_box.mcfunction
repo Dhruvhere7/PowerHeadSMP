@@ -1,0 +1,29 @@
+#mc-build WASD content
+setblock ~ ~ ~ minecraft:white_shulker_box
+loot insert ~ ~ ~ loot wasd.bows:ice
+loot insert ~ ~ ~ loot wasd.bows:lightning
+loot insert ~ ~ ~ loot wasd.bows:honey
+loot insert ~ ~ ~ loot wasd.bows:slime
+loot insert ~ ~ ~ loot wasd.bows:firework
+loot insert ~ ~ ~ loot wasd.bows:tnt
+loot insert ~ ~ ~ loot wasd.bows:critical
+loot insert ~ ~ ~ loot wasd.bows:rainbow
+loot insert ~ ~ ~ loot wasd.bows:quartz
+loot insert ~ ~ ~ loot wasd.bows:prismarine
+loot insert ~ ~ ~ loot wasd.bows:shulker
+loot insert ~ ~ ~ loot wasd.bows:chorus
+loot insert ~ ~ ~ loot wasd.bows:no_gravity
+loot insert ~ ~ ~ loot wasd.bows:angel
+loot insert ~ ~ ~ loot wasd.bows:glowstone
+loot insert ~ ~ ~ loot wasd.bows:wither
+loot insert ~ ~ ~ loot wasd.bows:emerald
+loot insert ~ ~ ~ loot wasd.bows:sniper
+loot insert ~ ~ ~ loot wasd.bows:short
+loot insert ~ ~ ~ loot wasd.bows:random
+loot insert ~ ~ ~ loot wasd.bows:armor_piercing
+loot insert ~ ~ ~ loot wasd.bows:bee
+loot insert ~ ~ ~ loot wasd.bows:bridging
+loot insert ~ ~ ~ loot wasd.bows:builder
+loot insert ~ ~ ~ loot wasd.bows:shooting_star
+loot insert ~ ~ ~ loot wasd.bows:squid
+loot insert ~ ~ ~ loot wasd.bows:long_range

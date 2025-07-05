@@ -1,0 +1,53 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "#TM",
+        "SRS",
+        "NBC"
+    ],
+    "key": {
+        "#": [
+            "minecraft:emerald_block"
+        ],
+        "T": [
+            "minecraft:netherite_block"
+        ],
+        "M": [
+            "minecraft:emerald_block"
+        ],
+        "S": [
+            "minecraft:diamond_block"
+        ],
+        "R": [
+            "minecraft:nether_star"
+        ],
+        "N": [
+            "minecraft:emerald_block"
+        ],
+        "B": [
+            "minecraft:diamond_boots"
+        ],
+        "C": [
+            "minecraft:emerald_block"
+        ]
+    },
+    "result": {
+        "id": "minecraft:golden_apple",
+        "components": {
+          "minecraft:custom_model_data": {
+            "strings": [
+              "si_token"
+            ]
+          },
+          "minecraft:custom_data": {
+            "si_token": true,
+            "gw_token": true,
+            "crafted_token": true
+          },
+          "minecraft:custom_name": "\"Sizeificator Token\"",
+          "minecraft:rarity": "epic"
+        },
+        "count": 1
+      }
+}

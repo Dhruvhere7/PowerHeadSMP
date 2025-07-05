@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands",
+    "pattern": [
+        "ABA",
+        " C ",
+        " D "
+    ],
+    "key": {
+        "A": "minecraft:torch",
+        "B": "minecraft:redstone_lamp",
+        "C": "minecraft:nether_star",
+        "D": "minecraft:lantern"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Orb of Light Wand\",\"translate\":\"wasd.wands.orb_of_light\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Places a temporary orb of light that gives off light.\",\"translate\":\"wasd.wands.orb_of_light.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370147
+                ]
+            },
+            "minecraft:item_model": "wasd:wands/base_wand",
+            "minecraft:custom_data": {
+                "wasd_wand_type": 47,
+                "wasd_wand": 1
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands",
+    "pattern": [
+        "B",
+        "C",
+        "D"
+    ],
+    "key": {
+        "B": "minecraft:dirt",
+        "C": "minecraft:nether_star",
+        "D": "minecraft:torch"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Earth Wand\",\"translate\":\"wasd.wands.earth\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Shoot a Fissure through the ground that launched into the air.\",\"translate\":\"wasd.wands.earth.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370117
+                ]
+            },
+            "minecraft:item_model": "wasd:wands/base_wand",
+            "minecraft:custom_data": {
+                "wasd_wand_type": 17,
+                "wasd_wand": 1
+            }
+        }
+    }
+}

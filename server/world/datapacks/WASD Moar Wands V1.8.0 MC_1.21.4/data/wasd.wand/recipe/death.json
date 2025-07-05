@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_wands",
+    "pattern": [
+        "ABA",
+        " C ",
+        " D "
+    ],
+    "key": {
+        "A": "minecraft:soul_sand",
+        "B": "minecraft:soul_soil",
+        "C": "minecraft:nether_star",
+        "D": "minecraft:nether_brick_fence"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Death Wand\",\"translate\":\"wasd.wands.death\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Shoots out a slowly moving wave of death.\",\"translate\":\"wasd.wands.death.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370137
+                ]
+            },
+            "minecraft:item_model": "wasd:wands/base_wand",
+            "minecraft:custom_data": {
+                "wasd_wand_type": 37,
+                "wasd_wand": 1
+            }
+        }
+    }
+}

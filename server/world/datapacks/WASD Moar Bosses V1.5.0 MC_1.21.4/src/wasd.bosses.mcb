@@ -1,0 +1,786 @@
+import ./templates/raytrace.mcbt
+
+function load load{
+    scoreboard objectives add wasd_data_packs dummy
+    scoreboard players set wasd_bosses wasd_data_packs 1
+    scoreboard objectives add w.bosses_setting dummy
+    function wasd.bosses:config
+    schedule function wasd.bosses:check_installed_packs 30t
+
+
+#fire
+#water
+#electric
+#earth
+#metal
+#air
+#chicken
+
+
+#husk
+#skeleton
+#piglin_brute
+
+}
+
+function check_installed_packs{
+    execute unless entity @a[advancements={wasd.installed:library=true}] run block{
+        tellraw @a {"bold":true,"color":"red","text":"Missing the Required Library!"}
+        tellraw @a {"text":" "}
+        tellraw @a [{"color":"dark_red","text":"Missing: "},{"clickEvent":{"action":"open_url","value":"https://wasdbuildteam.website/data-packs/wasd-libraries/"},"color":"#26DBFF","hoverEvent":{"action":"show_text","value":[{"text":"Click to Install"}]},"text":"Library"}]
+    }
+}
+
+
+function config{
+    #Enable/Disable recipes. 1 = Enabled/True. 0= Disabled/False.
+
+    #Enable/Disable Bosses.
+    scoreboard players set bosses w.bosses_setting 1
+
+    #Enable/Disable Types of Bosses
+    scoreboard players set fire w.bosses_setting 1
+    scoreboard players set water w.bosses_setting 1
+    scoreboard players set electric w.bosses_setting 1
+    scoreboard players set earth w.bosses_setting 1
+    scoreboard players set metal w.bosses_setting 1
+    scoreboard players set air w.bosses_setting 1
+    scoreboard players set chicken w.bosses_setting 1
+
+    #Spawn Chance of Bosses (% chance to turn enderman and witches into a boss) Must be between 1 and 100
+    scoreboard players set spawn_chance w.bosses_setting 100
+    scoreboard players set max_bosses w.bosses_setting 3
+
+}
+
+
+
+function tick tick{
+    execute as @e[tag=wasd.boss] at @s run function wasd.bosses:as_bosses
+    execute if score bosses w.bosses_setting matches 1.. run block{
+        execute as @e[type=enderman,tag=!wasd.checked_spawn] at @s run function wasd.bosses:spawning
+        execute as @e[type=witch,tag=!wasd.checked_spawn] at @s run function wasd.bosses:spawning
+    }
+}
+
+
+
+function as_bosses{
+    execute as @s[tag=wasd.fire_boss] run function wasd.bosses:boss/fire
+    execute as @s[tag=wasd.water_boss] run function wasd.bosses:boss/water
+    execute as @s[tag=wasd.lightning_boss] run function wasd.bosses:boss/lightning
+    execute as @s[tag=wasd.earth_boss] run function wasd.bosses:boss/earth
+    execute as @s[tag=wasd.metal_boss] run function wasd.bosses:boss/metal
+    execute as @s[tag=wasd.wind_boss] run function wasd.bosses:boss/wind
+    execute as @s[tag=wasd.chicken_boss] run function wasd.bosses:boss/chicken
+    execute unless entity @a[distance=..32] run scoreboard players add @s wasd.variables 1
+    execute as @s[scores={wasd.variables=48000..}] run block{
+        tp @s[type=!player] ~ -1000 ~
+        kill @s
+    }
+}
+
+dir summon{
+    dir fire{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/fire",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.fire_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"Inferno Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/fire/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/fire",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.fire_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Inferno Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/fire/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/fire",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.fire_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Inferno Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/fire/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..4
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370101f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370102f
+            execute as @s[scores={wasd.rng=3}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370103f
+            execute as @s[scores={wasd.rng=4}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370104f
+            tag @s add wasd.given_random_wand
+        }
+    }
+    dir water{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/water",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.water_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"Torrential Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/water/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/water",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.water_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Torrential Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/water/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/water",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.water_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Torrential Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/water/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..5
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370105f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370106f
+            execute as @s[scores={wasd.rng=3}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370107f
+            execute as @s[scores={wasd.rng=4}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370126f
+            execute as @s[scores={wasd.rng=5}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370127f
+            tag @s add wasd.given_random_wand
+        }
+
+    }
+    dir lightning{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/lightning",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.lightning_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"Charged Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/lightning/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/lightning",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.lightning_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Charged Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/lightning/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/lightning",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.lightning_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Charged Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/lightning/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..3
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370108f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370109f
+            execute as @s[scores={wasd.rng=3}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370110f
+            tag @s add wasd.given_random_wand
+        }
+
+    }
+    dir earth{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/earth",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.earth_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"Terra Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/earth/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/earth",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.earth_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Terra Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/earth/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/earth",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.earth_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Terra Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/earth/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..3
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370115f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370116f
+            execute as @s[scores={wasd.rng=3}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370117f
+            tag @s add wasd.given_random_wand
+        }
+
+    }
+    dir metal{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/metal",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.metal_boss"],CustomNameVisible:1b,Health:100f,IsBaby:0b,CustomName:'{"text":"Metalic Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:100},{id:"minecraft:movement_speed",base:0.05}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/metal/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/metal",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.metal_boss"],CustomNameVisible:1b,Health:100f,CustomName:'{"text":"Metalic Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:100},{id:"minecraft:movement_speed",base:0.05}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/metal/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/metal",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.metal_boss"],CustomNameVisible:1b,Health:100f,CustomName:'{"text":"Metalic Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:100},{id:"minecraft:movement_speed",base:0.05}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/metal/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..2
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370118f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370119f
+            tag @s add wasd.given_random_wand
+        }
+
+    }
+    dir wind{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/wind",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.wind_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"Tempest Zombie","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/wind/give_random_wand
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/wind",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.wind_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Tempest Skeleton","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/wind/give_random_wand
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/wind",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.wind_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"Tempest Piglin","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370000]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b}
+            execute as @e[tag=wasd.boss,tag=!wasd.given_random_wand,sort=nearest,limit=1] run function wasd.bosses:summon/wind/give_random_wand
+        }
+        function give_random_wand{
+            execute store result score @s wasd.rng run random value 1..4
+            execute as @s[scores={wasd.rng=1}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370111f
+            execute as @s[scores={wasd.rng=2}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370112f
+            execute as @s[scores={wasd.rng=3}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370113f
+            execute as @s[scores={wasd.rng=4}] run data modify entity @s HandItems[0].components."minecraft:custom_model_data".floats[0] set value 6370114f
+            tag @s add wasd.given_random_wand
+        }
+
+    }
+    dir chicken{
+        function zombie{
+            summon husk ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/chicken",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.chicken_boss"],CustomNameVisible:1b,Health:60f,IsBaby:0b,CustomName:'{"text":"KFC Chicken","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370128]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+        }
+        function skeleton{
+            summon skeleton ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/chicken",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.chicken_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"KFC Chicken","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370128]}}},{}],ArmorItems:[{},{},{},{id:"minecraft:oak_button",Count:1b}],ArmorDropChances:[0.000F,0.000F,0.000F,0.000F],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}]}
+        }
+        function piglin{
+            summon piglin_brute ~ ~ ~ {DeathLootTable:"wasd.bosses:bosses/chicken",PersistenceRequired:1b,HandDropChances:[0.000F,0.000F],Tags:["wasd.boss","wasd.chicken_boss"],CustomNameVisible:1b,Health:60f,CustomName:'{"text":"KFC Chicken","color":"dark_red"}',HandItems:[{id:"minecraft:warped_fungus_on_a_stick",count:1,components:{"minecraft:item_model":"wasd:wands/base_wand", "minecraft:custom_model_data":{"floats":[6370128]}}},{}],attributes:[{id:"minecraft:max_health",base:60},{id:"minecraft:movement_speed",base:0.1}],IsImmuneToZombification:1b,ArmorDropChances:[0.000F,0.000F,0.000F,0.000F]}
+        }
+
+    }
+}
+
+
+
+dir boss{
+function fire{
+    particle flame ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle smoke ~ ~1 ~ 0.2 0.3 0.2 0.02 1 normal
+    particle falling_lava ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:orange_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute unless entity @s[nbt={Fire:-1s}] run data merge entity @s {Fire:-1s}
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..4
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] anchored eyes positioned ^ ^ ^0.1 facing entity @p feet run block{
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound item.firecharge.use player @a ~ ~ ~ 1 2
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"a fireball"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.fireball"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.fireball,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 1
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 2
+                playsound entity.firework_rocket.large_blast player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.large_blast player @a ~ ~ ~ 1 2
+                summon marker ^-0.35 ^0.4 ^0.4 {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.meteor"]}
+                execute positioned ^-0.35 ^0.4 ^0.4 as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.meteor,sort=nearest,limit=1] run block{
+                    tp @s ~ ~ ~ ~ ~10
+                    execute at @s run function wasd.bosses:meteor_raytrace
+                }
+            }
+            execute as @s[scores={wasd.rng=3}] run block{
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0
+                playsound item.firecharge.use player @a ~ ~ ~ 1 0
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"a flamethrower"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.flamethrower","one"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.flamethrower,tag=one,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"a flamethrower"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.flamethrower","two"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.flamethrower,tag=two,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~15 ~
+
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"a flamethrower"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.flamethrower","three"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.flamethrower,tag=three,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~-15 ~
+
+            }
+            execute as @s[scores={wasd.rng=4}] run block{
+                playsound entity.firework_rocket.large_blast_far player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.large_blast_far player @a ~ ~ ~ 1 0.3
+                playsound entity.firework_rocket.large_blast_far player @a ~ ~ ~ 1 0.6
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"magma"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.magma"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.magma,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+            }
+            
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+}
+function water{
+    particle falling_water ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle dust_color_transition{from_color:[0.094, 0.153, 0.988], scale:1.0, to_color:[0.106, 0.643, 1.0]} ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:blue_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..5
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] anchored eyes positioned ^ ^ ^0.1 facing entity @p feet run block{
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound block.glass.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 2
+                summon marker ~ ~ ~ {CustomName:'"an iceball"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.ice"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.ice,sort=nearest,limit=1] ~ ~ ~ ~ ~-10
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound block.glass.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 2
+                summon item_display ~ ~ ~ {CustomName:'"an ice spike"',item_display:"head",Tags:["wasd.lib_entity_tick","wasd.ability","wasd.ice_spike"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]},item:{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/ice_spike"}}}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.ice_spike,sort=nearest,limit=1] ~ ~ ~ ~ ~-5
+            }
+            execute as @s[scores={wasd.rng=3}] run block{
+                playsound block.glass.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 2
+                execute at @s positioned as @s align y run summon marker ~ ~ ~ {CustomName:'"frost"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.frost"]}
+                execute at @s positioned as @s facing entity @p feet run tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.frost,sort=nearest,limit=1] ~ ~ ~ ~ 0
+            }
+            execute as @s[scores={wasd.rng=4}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound item.bucket.empty player @a ~ ~ ~ 1 1
+                execute anchored eyes positioned ^ ^ ^0.01 run summon marker ~ ~ ~ {CustomName:'"water"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.water"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.water,sort=nearest,limit=1] ~ ~ ~ ~ ~-10
+            }
+            execute as @s[scores={wasd.rng=5}] run block{
+                playsound block.glass.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 2
+                    execute positioned ^-0.35 ^0.4 ^0.4 run block{
+                        summon item_display ~ ~ ~ {CustomName:'"a bubble"',item_display:"head",Tags:["wasd.lib_entity_tick","wasd.ability","wasd.bubble"],teleport_duration:1,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]},item:{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/bubble"}}}
+                        execute as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.bubble,sort=nearest,limit=1] run tp @s ~ ~ ~ ~ ~-12
+                }
+            }
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+
+}
+function lightning{
+    particle end_rod ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle dust_color_transition{from_color:[1.0, 0.984, 0.02], scale:1.0, to_color:[1.0, 0.969, 0.557]} ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:yellow_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute unless entity @s[nbt={Fire:-1s}] run data merge entity @s {Fire:-1s}
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] anchored eyes positioned ^ ^ ^0.1 facing entity @p feet run block{
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0.2
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0.4
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0.6
+                playsound minecraft:entity.lightning_bolt.impact player @a ~ ~ ~ 1 2
+                summon marker ^-0.35 ^0.4 ^0.4 {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.lightning"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.lightning,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0.6
+                playsound minecraft:entity.lightning_bolt.thunder player @a ~ ~ ~ 1 2
+                effect give @s resistance 1 255 true
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"thunder"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.thunder"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.thunder,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+            }
+            execute as @s[scores={wasd.rng=3}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0.2
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0.4
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0.6
+                summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"electricity"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.electric"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.electric,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+            }
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+
+}
+function earth{
+    particle block{block_state:{Name:"minecraft:dirt"}} ~ ~1 ~ 0.1 0.3 0.1 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:brown_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] facing entity @p feet run block{
+        summon area_effect_cloud ~ ~ ~ {Tags:["wasd.earth_rotation"]}
+        tp @e[tag=wasd.earth_rotation,sort=nearest,limit=1] ~ ~ ~ ~-5 ~10
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                execute positioned ~ ~-1 ~ rotated ~ 0 positioned ^-2 ^ ^1 unless block ~ ~ ~ #wasd.tags:nonsolid run block{
+                    summon item_display ~ ~-2 ~ {CustomName:'"a rock"',item_display:"head",brightness:{sky:10,block:15},Tags:["wasd.lib_entity_tick","wasd.ability","wasd.rock"],teleport_duration:20,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]},item:{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/rock"}}}
+                    execute positioned ~ ~-2 ~ as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.rock,sort=nearest,limit=1] at @s run data modify entity @s Rotation set from entity @e[tag=wasd.earth_rotation,sort=nearest,limit=1] Rotation
+                }
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound block.deepslate.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                execute positioned ~ ~-1 ~ rotated ~ 0 positioned ^-2 ^ ^1 unless block ~ ~ ~ #wasd.tags:nonsolid run block{
+                    summon item_display ~ ~-4 ~ {CustomName:'"a boulder"',item_display:"head",brightness:{sky:10,block:15},Tags:["wasd.lib_entity_tick","wasd.ability","wasd.boulder"],teleport_duration:40,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]},item:{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/boulder"}}}
+                    execute positioned ~ ~-4 ~ as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.boulder,sort=nearest,limit=1] at @s run data modify entity @s Rotation set from entity @e[tag=wasd.earth_rotation,sort=nearest,limit=1] Rotation
+                }
+            }
+            execute as @s[scores={wasd.rng=3}] run block{
+                playsound block.basalt.break player @a ~ ~ ~ 1 1
+                playsound block.basalt.break player @a ~ ~ ~ 1 1
+                playsound block.basalt.break player @a ~ ~ ~ 1 1
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                execute align y run summon marker ~ ~ ~ {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.earth"]}
+                execute facing entity @p feet run tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.earth,sort=nearest,limit=1] ~ ~ ~ ~ 0
+
+            }
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+
+}
+function metal{
+    particle block{block_state:{Name:"minecraft:stone"}} ~ ~1 ~ 0.1 0.3 0.1 0.02 2 normal
+    particle smoke ~ ~1 ~ 0.1 0.3 0.1 0.04 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:gray_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=80..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..2
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] facing entity @p feet run block{
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound block.tuff.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                execute align y run summon marker ~ ~ ~ {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.ore"]}
+                execute facing entity @p feet run tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.ore,sort=nearest,limit=1] ~ ~ ~ ~ 0
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound block.tuff.break player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                execute anchored eyes positioned ^ ^ ^0.01 run summon marker ^-0.35 ^0.4 ^0.4 {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.steel_target"]}
+                execute anchored eyes positioned ^ ^ ^0.01 run execute positioned ^-0.35 ^0.4 ^0.4 as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.steel_target,sort=nearest,limit=1] run block{
+                    execute rotated ~ ~5 run function wasd.bosses:raytrace
+                }
+
+                execute positioned ~ ~-1 ~ rotated 0 0 run function wasd.lib:detection/horizontal/rotated/9x9
+                execute as @e[type=marker,tag=wasd.location] at @s run block{
+                    execute if block ~ ~ ~ #wasd.tags:nonsolid run tag @s add wasd.invalid_location
+                    
+                }
+                execute store result score @s wasd.rng run random value 1..3
+                execute as @s[scores={wasd.rng=1}] as @e[tag=wasd.location,tag=!wasd.invalid_location,sort=random,limit=5,distance=2..] run tag @s add wasd.selected_location
+                execute as @s[scores={wasd.rng=2}] as @e[tag=wasd.location,tag=!wasd.invalid_location,sort=random,limit=6,distance=2..] run tag @s add wasd.selected_location
+                execute as @s[scores={wasd.rng=3}] as @e[tag=wasd.location,tag=!wasd.invalid_location,sort=random,limit=7,distance=2..] run tag @s add wasd.selected_location
+
+                execute as @e[tag=wasd.location,tag=wasd.selected_location] at @s run summon item_display ~ ~-2 ~ {CustomName:'"a spike"',Passengers:[{id:"minecraft:marker",Rotation:[0.1F,0.1F],Tags:["wasd.spike_rotation_storage"]}],item_display:"head",brightness:{sky:10,block:15},Tags:["wasd.lib_entity_tick","wasd.ability","wasd.iron_spike"],teleport_duration:50,interpolation_duration:10,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[0.8f,0.8f,0.8f]},item:{id:"minecraft:armor_stand",count:1,components:{"minecraft:item_model":"wasd:abilities/iron_spike"}}}
+                kill @e[tag=wasd.location]
+
+            }
+        }
+        execute store result score @s wasd.rng run random value 1..40
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+}
+function wind{
+    particle dust{color:[1.0, 1.0, 1.0], scale:1.0} ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:white_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute store result score @s wasd.rng run random value 1..4
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] anchored eyes positioned ^ ^ ^0.1 facing entity @p feet run block{
+            execute as @s[scores={wasd.rng=1}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound entity.firework_rocket.blast player @a ~ ~ ~ 1 0
+                execute at @s positioned as @s align y run summon marker ~ ~ ~ {CustomName:'"a blast of air"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.air"]}
+                execute at @s positioned as @s facing entity @p feet run tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.air,sort=nearest,limit=1] ~ ~ ~ ~ 0
+            }
+            execute as @s[scores={wasd.rng=2}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound item.firecharge.use player @a ~ ~ ~ 1 2
+                execute anchored eyes positioned ^ ^ ^0.01 run summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"a gust of wind"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.wind"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.wind,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+            }
+            execute as @s[scores={wasd.rng=3}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound item.elytra.flying player @a ~ ~ ~ 1 1.7
+                execute positioned ~ ~2 ~ rotated ~ 0 run function wasd.lib:detection/vertical/9x9
+                execute positioned ~ ~2 ~ as @e[tag=wasd.location,distance=..1] at @s run tag @s add wasd.invalid_location
+                summon marker ~ ~2 ~ {Tags:["wasd.lib_entity_tick","wasd.ability","wasd.hurricane"]}
+                execute at @s positioned ~ ~2 ~ run tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.hurricane,sort=nearest,limit=1] ~ ~ ~ ~ ~10
+                execute as @e[tag=wasd.location] at @s unless block ~ ~ ~ #wasd.tags:nonsolid run tag @s add wasd.invalid_location
+                execute as @e[tag=wasd.location,sort=random,limit=15,tag=!wasd.invalid_location] at @s run block{
+                    summon marker ~ ~ ~ {CustomName:'"a gust of wind"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.wind","wasd.wait"]}
+                    execute as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.wind,sort=nearest,limit=1] run data modify entity @s Rotation set from entity @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.hurricane,tag=!wasd.done,sort=nearest,limit=1] Rotation
+                    execute store result score @s wasd.rng run random value 1..5
+                    execute as @s[scores={wasd.rng=2}] run tp @s ~ ~ ~ ~3 ~
+                    execute as @s[scores={wasd.rng=3}] run tp @s ~ ~ ~ ~1 ~
+                    execute as @s[scores={wasd.rng=4}] run tp @s ~ ~ ~ ~-1 ~
+                    execute as @s[scores={wasd.rng=5}] run tp @s ~ ~ ~ ~-3 ~
+                    execute store result score @s wasd.rng run random value 1..5
+                    execute as @s[scores={wasd.rng=2}] at @s run tp @s ~ ~ ~ ~ ~3
+                    execute as @s[scores={wasd.rng=3}] at @s run tp @s ~ ~ ~ ~ ~1
+                    execute as @s[scores={wasd.rng=4}] at @s run tp @s ~ ~ ~ ~ ~-1
+                    execute as @s[scores={wasd.rng=5}] at @s run tp @s ~ ~ ~ ~ ~-3
+                }
+                kill @e[tag=wasd.location]
+                tag @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.hurricane,sort=nearest,limit=1] add wasd.done
+
+            }
+            execute as @s[scores={wasd.rng=4}] run block{
+                playsound entity.firework_rocket.blast_far player @a ~ ~ ~ 1 0
+                playsound item.firecharge.use player @a ~ ~ ~ 1 2
+                execute anchored eyes positioned ^ ^ ^0.01 run summon marker ^-0.35 ^0.4 ^0.4 {CustomName:'"the wind"',Tags:["wasd.lib_entity_tick","wasd.ability","wasd.gust"]}
+                tp @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.gust,sort=nearest,limit=1] ^-0.35 ^0.4 ^0.4 ~ ~
+
+            }
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+}
+function chicken{
+    particle dust{color:[1.0, 1.0, 1.0], scale:1.0} ~ ~1 ~ 0.2 0.3 0.2 0.02 2 normal
+    particle falling_dust{block_state:{Name:"minecraft:red_concrete"}} ~ ~0.1 ~ 0.2 0.05 0.2 0 2 normal
+    execute if entity @a[gamemode=!creative,gamemode=!spectator,distance=..25] run scoreboard players add @s wasd.timer 1
+    execute as @s[scores={wasd.timer=130..}] run block{
+        tag @s add wasd.checking_los
+        execute anchored eyes positioned ^ ^ ^1.5 facing entity @p eyes run block{
+            summon marker ~ ~ ~ {Tags:["wasd.check_los"]}
+            execute positioned ~ ~ ~ as @e[tag=wasd.check_los,sort=nearest,limit=1] run block{
+                tp @s ~ ~ ~ ~ ~
+                execute at @s run function wasd.bosses:check_los
+            }
+        }
+
+        scoreboard players reset @s wasd.timer
+        execute as @s[tag=wasd.has_los] run tp @s ~ ~ ~ facing entity @p[gamemode=!creative,gamemode=!spectator,distance=..25] eyes
+        execute as @s[tag=wasd.has_los] anchored eyes positioned ^ ^ ^0.1 facing entity @p feet run block{
+            playsound entity.chicken.hurt player @a ~ ~ ~ 1 1
+            summon chicken ^-0.35 ^0.4 ^0.4 {HasVisualFire:1b,Invulnerable:1b,DeathLootTable:"none",Tags:["wasd.lib_entity_tick","wasd.ability","wasd.kfc"]}
+            execute positioned ^-0.35 ^0.4 ^0.4 as @e[tag=wasd.lib_entity_tick,tag=wasd.ability,tag=wasd.kfc,sort=nearest,limit=1] positioned ^ ^ ^25 run function wasd.lib:math/apply_motion
+
+        }
+        execute store result score @s wasd.rng run random value 1..100
+        scoreboard players operation @s wasd.timer = @s wasd.rng
+        tag @s remove wasd.checking_los
+        tag @s remove wasd.has_los
+    }
+}
+
+}
+
+function check_los{
+scoreboard players add @s wasd.timer 1
+tp @s ~ ~ ~
+
+execute unless score @s wasd.timer matches 200.. positioned ^ ^ ^0.2 if block ^ ^ ^0.2 #wasd.tags:nonsolid positioned ~ ~1 ~ unless entity @a[distance=..1] positioned ~ ~-1 ~ unless entity @a[distance=..1] positioned ~ ~-1 ~ unless entity @a[distance=..1] positioned ~ ~1 ~ run function wasd.bosses:check_los
+
+execute positioned ^ ^ ^0.2 positioned ~ ~1 ~ if entity @a[distance=..1] run tag @e[tag=wasd.boss,tag=wasd.checking_los,sort=nearest,limit=1] add wasd.has_los
+execute positioned ^ ^ ^0.2 positioned ~ ~0 ~ if entity @a[distance=..1] run tag @e[tag=wasd.boss,tag=wasd.checking_los,sort=nearest,limit=1] add wasd.has_los
+execute positioned ^ ^ ^0.2 positioned ~ ~-1 ~ if entity @a[distance=..1] run tag @e[tag=wasd.boss,tag=wasd.checking_los,sort=nearest,limit=1] add wasd.has_los
+
+}
+
+
+
+function spawning{
+    tag @s add wasd.checked_spawn
+    execute store result score @s wasd.rng run random value 1..100
+    execute if score @s wasd.rng <= spawn_chance w.bosses_setting unless dimension minecraft:the_end run block{
+        execute store result score @s wasd.temp if entity @e[tag=wasd.boss]
+        execute if score @s wasd.temp < max_bosses w.bosses_setting run block{
+            execute if score fire w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] if dimension minecraft:the_nether run function wasd.bosses:check_biome/fire
+            execute if score water w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] run function wasd.bosses:check_biome/water
+            execute if score electric w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] run function wasd.bosses:check_biome/electric
+            execute if score earth w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] run function wasd.bosses:check_biome/earth
+            execute if score metal w.bosses_setting matches 1.. if entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] run function wasd.bosses:check_biome/metal
+            execute if score air w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] if entity @s[y=130,dy=200] run function wasd.bosses:check_biome/air
+            execute if score chicken w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] run function wasd.bosses:check_biome/chicken
+        }
+    }
+    
+}
+
+dir check_biome{
+    function fire{
+        #nether biomes but not warped forest
+        execute unless biome ~ ~ ~ minecraft:warped_forest run function wasd.bosses:check_biome/is_fire
+    }
+    function is_fire{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/fire/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/fire/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/fire/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function water{
+        #oceans
+        execute if biome ~ ~ ~ minecraft:river run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:beach run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:ice_spikes run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:snowy_plains run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:snowy_taiga run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:warm_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:lukewarm_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:deep_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:deep_lukewarm_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:deep_frozen_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:deep_cold_ocean run function wasd.bosses:check_biome/is_water
+        execute if biome ~ ~ ~ minecraft:cold_ocean run function wasd.bosses:check_biome/is_water
+    }
+    function is_water{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/water/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/water/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/water/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function electric{
+        #deserts and such
+        execute if biome ~ ~ ~ minecraft:badlands run function wasd.bosses:check_biome/is_electric
+        execute if biome ~ ~ ~ minecraft:desert run function wasd.bosses:check_biome/is_electric
+        execute if biome ~ ~ ~ minecraft:eroded_badlands run function wasd.bosses:check_biome/is_electric
+        execute if biome ~ ~ ~ minecraft:savanna run function wasd.bosses:check_biome/is_electric
+        execute if biome ~ ~ ~ minecraft:savanna_plateau run function wasd.bosses:check_biome/is_electric
+    }
+    function is_electric{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/lightning/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/lightning/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/lightning/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function earth{
+        #plains, forests, tiagas
+        execute if biome ~ ~ ~ minecraft:forest run function wasd.bosses:check_biome/is_earth
+        execute if biome ~ ~ ~ minecraft:plains unless entity @e[type=chicken,distance=..10] run function wasd.bosses:check_biome/is_earth
+        execute if biome ~ ~ ~ minecraft:stony_shore run function wasd.bosses:check_biome/is_earth
+        execute if biome ~ ~ ~ minecraft:swamp run function wasd.bosses:check_biome/is_earth
+        execute if biome ~ ~ ~ minecraft:taiga run function wasd.bosses:check_biome/is_earth
+    }
+    function is_earth{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/earth/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/earth/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/earth/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function metal{
+        #caves, low in the world check.
+        function wasd.bosses:check_biome/is_metal
+    }
+    function is_metal{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/metal/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/metal/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/metal/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function air{
+        #mountains high up
+        execute if biome ~ ~ ~ minecraft:frozen_peaks run function wasd.bosses:check_biome/is_air
+        execute if biome ~ ~ ~ minecraft:jagged_peaks run function wasd.bosses:check_biome/is_air
+        execute if biome ~ ~ ~ minecraft:meadow run function wasd.bosses:check_biome/is_air
+        execute if biome ~ ~ ~ minecraft:snowy_slopes run function wasd.bosses:check_biome/is_air
+        execute if biome ~ ~ ~ minecraft:stony_peaks run function wasd.bosses:check_biome/is_air
+        execute if biome ~ ~ ~ minecraft:grove run function wasd.bosses:check_biome/is_air
+    }
+    function is_air{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/wind/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/wind/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/wind/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+    function chicken{
+        execute if biome ~ ~ ~ minecraft:plains if entity @e[type=chicken,distance=..10] run function wasd.bosses:check_biome/is_chicken
+    }
+    function is_chicken{
+        execute store result score @s wasd.rng run random value 1..3
+        execute as @s[scores={wasd.rng=1}] run function wasd.bosses:summon/chicken/zombie
+        execute as @s[scores={wasd.rng=2}] run function wasd.bosses:summon/chicken/skeleton
+        execute as @s[scores={wasd.rng=3}] run function wasd.bosses:summon/chicken/piglin
+        tp @s[type=!player] ~ -1000 ~
+    }
+
+
+}
+
+
+
+function spawn_boss{
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score fire w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] if dimension minecraft:the_nether at @s run function wasd.bosses:check_biome/fire
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score water w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/water
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score electric w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/electric
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score earth w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/earth
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score metal w.bosses_setting matches 1.. if entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/metal
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score air w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] if entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/air
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] if score chicken w.bosses_setting matches 1.. unless entity @s[y=-64,dy=64] unless entity @s[y=130,dy=200] at @s run function wasd.bosses:check_biome/chicken
+    execute unless entity @e[tag=wasd.boss,distance=..0.1] run tellraw @s {"text":"No Bosses can spawn at this location","color":"dark_red"}
+}
+
+function raytrace{
+    raytrace 200 0.2 true false function wasd.bosses:raytrace
+}
+function meteor_raytrace{
+    raytrace 200 0.2 true false function wasd.bosses:meteor_raytrace
+    particle dust_color_transition{from_color:[1.0, 0.569, 0.0], scale:1.0, to_color:[1.0, 0.851, 0.0]} ~ ~ ~ 0.0 0.0 0.0 0 1 force
+}

@@ -1,0 +1,50 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "water_swords",
+    "category": "equipment",
+    "pattern": [
+        " A ",
+        " E ",
+        " # "
+    ],
+    "key": {
+        "#": "minecraft:stick",
+        "E": "minecraft:heart_of_the_sea",
+        "A": "minecraft:cod"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:stone_sword",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Dolphin Sword\",\"translate\":\"wasd.sword.dolphin\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Gives Dolphin's Grace.\",\"translate\": \"wasd.sword.dolphin.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:item_model": "wasd:swords/dolphin",
+            "minecraft:max_damage": 250,
+            "repairable": {"items": ["cod","salmon","pufferfish","tropical_fish"]},
+            "minecraft:custom_data": {
+                "wasd_sword": 1,
+                "wasd.sword_type": 56
+            },
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "type": "minecraft:attack_damage",
+                        "id": "6370001",
+                        "amount": 4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    },
+                    {
+                        "type": "minecraft:attack_speed",
+                        "id": "6370001",
+                        "amount": -2.4,
+                        "operation": "add_value",
+                        "slot": "mainhand"
+                    }
+                ]
+            }
+        }
+    }
+}

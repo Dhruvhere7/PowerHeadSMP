@@ -1,0 +1,30 @@
+#mc-build WASD content
+setblock ~ ~ ~ minecraft:light_blue_shulker_box
+loot insert ~ ~ ~ loot wasd.sword:items/chorus_fruit
+loot insert ~ ~ ~ loot wasd.sword:items/soul_sand
+loot insert ~ ~ ~ loot wasd.sword:items/firework
+loot insert ~ ~ ~ loot wasd.sword:items/swordfish
+loot insert ~ ~ ~ loot wasd.sword:items/glowstone
+loot insert ~ ~ ~ loot wasd.sword:items/honey
+loot insert ~ ~ ~ loot wasd.sword:items/magma_block
+loot insert ~ ~ ~ loot wasd.sword:items/piston
+loot insert ~ ~ ~ loot wasd.sword:items/sticky_piston
+loot insert ~ ~ ~ loot wasd.sword:items/emerald
+loot insert ~ ~ ~ loot wasd.sword:items/quartz
+loot insert ~ ~ ~ loot wasd.sword:items/prismarine
+loot insert ~ ~ ~ loot wasd.sword:items/shulker
+loot insert ~ ~ ~ loot wasd.sword:items/lapis
+loot insert ~ ~ ~ loot wasd.sword:items/claymore
+loot insert ~ ~ ~ loot wasd.sword:items/dolphin
+loot insert ~ ~ ~ loot wasd.sword:items/redstone
+loot insert ~ ~ ~ loot wasd.sword:items/end_stone
+loot insert ~ ~ ~ loot wasd.sword:items/cobweb
+loot insert ~ ~ ~ loot wasd.sword:items/note_block
+loot insert ~ ~ ~ loot wasd.sword:items/blaze_rod
+loot insert ~ ~ ~ loot wasd.sword:items/ender_eye
+loot insert ~ ~ ~ loot wasd.sword:items/copper
+loot insert ~ ~ ~ loot wasd.sword:items/amethyst
+loot insert ~ ~ ~ loot wasd.sword:items/deepslate
+loot insert ~ ~ ~ loot wasd.sword:items/golden_carrot
+loot insert ~ ~ ~ loot wasd.sword:items/chain
+loot insert ~ ~ ~ loot wasd.sword:items/bell

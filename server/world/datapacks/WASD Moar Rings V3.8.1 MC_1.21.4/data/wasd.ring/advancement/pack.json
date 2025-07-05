@@ -1,0 +1,22 @@
+{
+  "parent": "wasd.lib:wasd/root",
+  "display": {
+    "icon": {
+      "id": "minecraft:brick",
+      "components": {
+        "minecraft:item_model": "wasd:datapacks/rings"
+      }
+    },
+    "title": "Zelda Rings",
+    "description": "Adds rings that give you special effects.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

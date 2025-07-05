@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_pearls_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Star Pearl\",\"translate\":\"wasd.pearls.star\",\"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"Infinitely reusable.\",\"translate\":\"wasd.pearls.star.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:item_model": "wasd:pearl/star"
+        }
+    }
+}

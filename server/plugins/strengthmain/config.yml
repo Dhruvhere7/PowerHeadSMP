@@ -1,0 +1,28 @@
+# If your looking for the recipe its here
+# as of now changing this will not change the recipe
+# it will be updated in the next update :D
+recipe:
+  enabled: true
+  shape:
+  - ABA
+  - BCB
+  - ABA
+  ingredients:
+    A: DIAMOND_BLOCK
+    B: NETHERITE_BLOCK
+    C: BOOK
+strength:
+  75838ce3-9e90-3cdb-89b3-72d4664d68ff: 1.0
+  d5b8f7f2-c14e-3b4d-b659-332c8f9f8efa: 1.0
+  926c9751-aeee-316a-8a56-6a456cb3b469: 1.0
+  2e90cbe5-d690-36fb-b094-a4c13ee46ad5: 1.0
+  ad021175-5447-347e-838c-4af671c89c2c: 1.0
+  9ef24393-c3cd-4500-9302-4f2653aa5e3d: 1.0
+  13ef4dbd-d18d-4e9b-bc68-400f92c97de9: 1.0
+  c78b2858-5f69-3696-9728-48a5cc610b29: 1.0
+  ea87c544-ec5f-3cdc-9b01-61c3ec1474fd: 1.0
+  642df481-31e6-38ad-a5e9-f7948786d26b: 1.0
+  da198a9c-e3d8-488c-8fbc-ab67a8044dc8: 1.0
+  43c3c5fe-bcfa-3173-92d8-f4ae98845f29: 1.0
+  d330e53a-38c6-352d-b583-cddcc13f852d: 1.0
+  4b3da789-236c-4331-92d4-546e28006adf: 1.0

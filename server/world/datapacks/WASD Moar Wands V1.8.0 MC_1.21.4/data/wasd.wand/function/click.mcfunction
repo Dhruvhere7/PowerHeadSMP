@@ -1,0 +1,60 @@
+#mc-build WASD content
+scoreboard players reset @s wasd.wand_type
+execute unless score @s w.wand_cooldown matches 1.. store result score @s wasd.wand_type run data get entity @s SelectedItem.components."minecraft:custom_data".wasd_wand_type
+execute as @s[scores={wasd.wand_type=1}] run function wasd.wand:wands/fireball
+execute as @s[scores={wasd.wand_type=2}] run function wasd.wand:patron/wands/meteor
+execute as @s[scores={wasd.wand_type=3}] run function wasd.wand:patron/wands/flamethrower
+execute as @s[scores={wasd.wand_type=4}] run function wasd.wand:patron/wands/magma
+execute as @s[scores={wasd.wand_type=5}] run function wasd.wand:wands/ice
+execute as @s[scores={wasd.wand_type=6}] run function wasd.wand:patron/wands/ice_spike
+execute as @s[scores={wasd.wand_type=7}] run function wasd.wand:patron/wands/frost
+execute as @s[scores={wasd.wand_type=8}] run function wasd.wand:wands/lightning
+execute as @s[scores={wasd.wand_type=9}] run function wasd.wand:patron/wands/thunder
+execute as @s[scores={wasd.wand_type=10}] run function wasd.wand:patron/wands/electric
+execute as @s[scores={wasd.wand_type=11}] run function wasd.wand:patron/wands/air
+execute as @s[scores={wasd.wand_type=12}] run function wasd.wand:wands/wind
+execute as @s[scores={wasd.wand_type=13}] run function wasd.wand:patron/wands/hurricane
+execute as @s[scores={wasd.wand_type=14}] run function wasd.wand:patron/wands/gust
+execute as @s[scores={wasd.wand_type=15}] run function wasd.wand:patron/wands/rock
+execute as @s[scores={wasd.wand_type=16}] run function wasd.wand:patron/wands/boulder
+execute as @s[scores={wasd.wand_type=17}] run function wasd.wand:wands/earth
+execute as @s[scores={wasd.wand_type=18}] run function wasd.wand:wands/ore
+execute as @s[scores={wasd.wand_type=19}] run function wasd.wand:patron/wands/steel
+execute as @s[scores={wasd.wand_type=22}] run function wasd.wand:patron/wands/cage
+execute as @s[scores={wasd.wand_type=23}] run function wasd.wand:patron/wands/poison
+execute as @s[scores={wasd.wand_type=24}] run function wasd.wand:patron/wands/dripstone
+execute as @s[scores={wasd.wand_type=25}] run function wasd.wand:patron/wands/anvil
+execute as @s[scores={wasd.wand_type=26}] run function wasd.wand:patron/wands/water
+execute as @s[scores={wasd.wand_type=27}] run function wasd.wand:patron/wands/bubble
+execute as @s[scores={wasd.wand_type=28}] run function wasd.wand:wands/kfc
+#new
+execute as @s[scores={wasd.wand_type=29}] run function wasd.wand:patron/wands/feathered
+execute as @s[scores={wasd.wand_type=30}] run function wasd.wand:patron/wands/healing
+execute as @s[scores={wasd.wand_type=31}] run function wasd.wand:patron/wands/growth
+execute as @s[scores={wasd.wand_type=32}] run function wasd.wand:patron/wands/plant
+execute as @s[scores={wasd.wand_type=33}] run function wasd.wand:wands/log
+execute as @s[scores={wasd.wand_type=34}] run function wasd.wand:patron/wands/bee
+execute as @s[scores={wasd.wand_type=35}] run function wasd.wand:patron/wands/portal
+execute as @s[scores={wasd.wand_type=36}] run function wasd.wand:patron/wands/undead
+execute as @s[scores={wasd.wand_type=37}] run function wasd.wand:wands/death
+execute as @s[scores={wasd.wand_type=38}] run function wasd.wand:patron/wands/draining
+execute as @s[scores={wasd.wand_type=39}] run function wasd.wand:patron/wands/acid
+execute as @s[scores={wasd.wand_type=40}] run function wasd.wand:wands/shadow
+execute as @s[scores={wasd.wand_type=41}] run function wasd.wand:patron/wands/shadow_walk
+execute as @s[scores={wasd.wand_type=42}] run function wasd.wand:patron/wands/darkness
+execute as @s[scores={wasd.wand_type=43}] run function wasd.wand:patron/wands/dark_sword
+execute as @s[scores={wasd.wand_type=44}] run function wasd.wand:patron/wands/telekinesis
+execute as @s[scores={wasd.wand_type=45}] run function wasd.wand:patron/wands/ethereal_fist
+execute as @s[scores={wasd.wand_type=46}] run function wasd.wand:patron/wands/heavenly_light
+execute as @s[scores={wasd.wand_type=47}] run function wasd.wand:wands/orb_of_light
+execute as @s[scores={wasd.wand_type=48}] run function wasd.wand:patron/wands/flash
+execute as @s[scores={wasd.wand_type=49}] run function wasd.wand:patron/wands/sword
+execute as @s[scores={wasd.wand_type=50}] run function wasd.wand:patron/wands/chain
+execute as @s[scores={wasd.wand_type=51}] run function wasd.wand:patron/wands/combustion
+execute as @s[scores={wasd.wand_type=52}] run function wasd.wand:patron/wands/flaming_pillar
+execute as @s[scores={wasd.wand_type=53}] run function wasd.wand:patron/wands/wind_cutter
+execute as @s[scores={wasd.wand_type=54}] run function wasd.wand:patron/wands/tornado
+execute as @s[scores={wasd.wand_type=55}] run function wasd.wand:patron/wands/wall
+execute as @s[scores={wasd.wand_type=56}] run function wasd.wand:patron/wands/zap
+execute as @s[scores={wasd.wand_type=57}] run function wasd.wand:test
+scoreboard players reset @s wasd.wand_click

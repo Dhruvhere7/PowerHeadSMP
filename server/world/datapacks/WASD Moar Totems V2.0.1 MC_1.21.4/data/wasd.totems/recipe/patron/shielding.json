@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:warped_fungus_on_a_stick",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Totem of Shielding\",\"translate\":\"wasd.totems.shielding\",\"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"Places an Aura of Shielding that.\",\"translate\":\"wasd.totems.shielding.lore\",\"italic\":false,\"color\":\"blue\"}",
+                "{\"fallback\":\"blocks all projectiles.\",\"translate\":\"wasd.totems.shielding.lore2\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:item_model": "wasd:totem/shielding"
+        }
+    }
+}

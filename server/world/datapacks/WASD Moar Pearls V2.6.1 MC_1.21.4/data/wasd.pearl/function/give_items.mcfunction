@@ -1,0 +1,26 @@
+#mc-build WASD content
+loot give @s loot wasd.pearl:items/fast
+loot give @s loot wasd.pearl:items/slow
+loot give @s loot wasd.pearl:items/hanging
+loot give @s loot wasd.pearl:items/no_gravity
+loot give @s loot wasd.pearl:items/instant
+loot give @s loot wasd.pearl:items/infested
+loot give @s loot wasd.pearl:items/ninja
+loot give @s loot wasd.pearl:items/swap
+loot give @s loot wasd.pearl:items/party
+loot give @s loot wasd.pearl:items/drop
+loot give @s loot wasd.pearl:items/chorus
+loot give @s loot wasd.pearl:items/cursed
+loot give @s loot wasd.pearl:items/dragon
+loot give @s loot wasd.pearl:items/golden
+loot give @s loot wasd.pearl:items/enchanted_golden
+loot give @s loot wasd.pearl:items/fireball
+loot give @s loot wasd.pearl:items/honey
+loot give @s loot wasd.pearl:items/jester
+loot give @s loot wasd.pearl:items/safety
+loot give @s loot wasd.pearl:items/slime
+loot give @s loot wasd.pearl:items/freeze
+loot give @s loot wasd.pearl:items/ghost
+loot give @s loot wasd.pearl:items/magnetic
+loot give @s loot wasd.pearl:items/troll
+loot give @s loot wasd.pearl:items/sugar

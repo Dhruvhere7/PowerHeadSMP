@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        " B ",
+        "BTB",
+        " B "
+    ],
+    "key": {
+        "T": "minecraft:totem_of_undying",
+        "B": "minecraft:gunpowder"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:totem_of_undying",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Ghost Totem\",\"translate\":\"wasd.totems.ghost\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Makes you fully invisible for a bit on use.\",\"translate\":\"wasd.totems.ghost.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_totem_type": 2,
+                "wasd_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/ghost"
+        }
+    }
+}

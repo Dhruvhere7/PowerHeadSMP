@@ -1,0 +1,32 @@
+#mc-build WASD content
+execute as @s[tag=wasd.ice] if score particles w.bows_settings matches 1 run particle minecraft:poof ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+execute as @s[tag=wasd.honey] if score particles w.bows_settings matches 1 run particle minecraft:falling_nectar ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.slime] if score particles w.bows_settings matches 1 run particle minecraft:item_slime ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+execute as @s[tag=wasd.critical] if score particles w.bows_settings matches 1 run particle dust{color:[0.839, 0.957, 1.0], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 1 force
+execute as @s[tag=wasd.quartz] if score particles w.bows_settings matches 1 run particle block{block_state:{Name:"minecraft:quartz_block"}} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.prismarine] if score particles w.bows_settings matches 1 run particle minecraft:rain ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.shulker] if score particles w.bows_settings matches 1 run particle minecraft:end_rod ~ ~ ~ 0.1 0.1 0.1 0.05 10 force
+execute as @s[tag=wasd.chorus] if score particles w.bows_settings matches 1 run particle minecraft:dragon_breath ~ ~ ~ 0.1 0.1 0.1 0.02 10 force
+execute as @s[tag=wasd.glowstone] if score particles w.bows_settings matches 1 run particle dust{color:[0.941, 0.741, 0.196], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.wither] if score particles w.bows_settings matches 1 run particle dust{color:[0.290, 0.290, 0.290], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.emerald] if score particles w.bows_settings matches 1 run particle minecraft:happy_villager ~ ~ ~ 0.1 0.1 0.1 0 10 force
+execute as @s[tag=wasd.armor_piercing] if score particles w.bows_settings matches 1 run particle dust{color:[0.071, 0.969, 1.000], scale:2.0} ~ ~ ~ 0.1 0.1 0.1 0.02 5 force
+execute as @s[tag=wasd.angel] if score particles w.bows_settings matches 1 run function wasd.bows:zzz/5
+execute as @s[tag=wasd.lightning] run function wasd.bows:zzz/6
+execute as @s[tag=wasd.firework] run function wasd.bows:zzz/7
+execute as @s[tag=wasd.tnt] run function wasd.bows:zzz/8
+execute as @s[tag=wasd.rainbow] run function wasd.bows:zzz/9
+execute as @s[tag=wasd.no_gravity] run function wasd.bows:zzz/10
+execute as @s[tag=wasd.sniper] run function wasd.bows:zzz/11
+execute as @s[tag=wasd.short] run function wasd.bows:zzz/12
+execute as @s[tag=wasd.random] run function wasd.bows:zzz/13
+execute as @s[tag=wasd.builder] run function wasd.bows:zzz/14
+execute as @s[tag=wasd.bridging] run function wasd.bows:zzz/18
+execute as @s[tag=wasd.shooting_star] run function wasd.bows:zzz/19
+execute as @s[tag=wasd.squid] run function wasd.bows:zzz/20
+execute as @s[tag=wasd.long_range] run function wasd.bows:zzz/21
+execute as @s[tag=wasd.slow] run function wasd.bows:zzz/23
+execute as @s[tag=wasd.master_builder] run function wasd.bows:zzz/26
+execute as @s[tag=wasd.bouncy] run function wasd.bows:zzz/27
+execute as @s[tag=wasd.anvil] run function wasd.bows:zzz/29
+scoreboard players set arrow_shot w.bows_settings 2

@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:totem_of_undying",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Blast Totem\",\"translate\":\"wasd.totems.blast\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Causes an explosion when it gets activated.\",\"translate\":\"wasd.totems.blast.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_totem_type": 6,
+                                    "wasd_totem": 1
+                                },
+                                "minecraft:item_model": "wasd:totem/blast"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

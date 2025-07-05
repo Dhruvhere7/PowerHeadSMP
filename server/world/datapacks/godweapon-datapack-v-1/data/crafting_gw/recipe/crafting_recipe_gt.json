@@ -1,0 +1,48 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "#B#",
+        "HMH",
+        "ESE"
+    ],
+    "key": {
+        "#": [
+            "minecraft:ender_eye"
+        ],
+        "B": [
+            "minecraft:heart_of_the_sea"
+        ],
+        "H": [
+            "minecraft:lightning_rod"
+        ],
+        "M": [
+            "minecraft:trident"
+        ],
+        "E": [
+            "minecraft:ender_eye"
+        ],
+        "S": [
+            "minecraft:heart_of_the_sea"
+        ]
+    },
+    "result": {
+        "id": "minecraft:golden_apple",
+        "components": {
+          "minecraft:custom_model_data": {
+            "strings": [
+              "gt_token"
+            ]
+          },
+          "minecraft:custom_data": {
+            "gt_token": true,
+            "gw_token": true,
+            "crafted_token": true
+          },
+          "minecraft:custom_name": "\"God Tamer Token\"",
+          "minecraft:rarity": "epic",
+          "minecraft:hide_additional_tooltip": {}
+        },
+        "count": 1
+      }
+}

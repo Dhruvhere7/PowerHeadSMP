@@ -1,0 +1,31 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:golden_apple",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Poison Apple\",\"translate\":\"wasd.apples.poison\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Eating curses you with a slow poison!\",\"translate\": \"wasd.apples.poison.lore\", \"italic\":false, \"color\":blue}",
+                                    "{\"fallback\":\"Attacking transfers the curse to the target.\",\"translate\": \"wasd.apples.poison.lore2\", \"italic\":false, \"color\":blue}",
+                                    "{\"fallback\":\"It can only be transferred once.\",\"translate\": \"wasd.apples.poison.lore3\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_data": {
+                                    "wasd_apple_type": 4,
+                                    "wasd_apple": 1
+                                },
+                                "minecraft:item_model": "wasd:apples/poison"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

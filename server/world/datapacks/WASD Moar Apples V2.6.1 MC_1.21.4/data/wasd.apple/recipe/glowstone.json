@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_apples",
+    "pattern": [
+        "XXX",
+        "XAX",
+        "XXX"
+    ],
+    "key": {
+        "X": "minecraft:glowstone_dust",
+        "A": "minecraft:apple"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Glowstone Apple\",\"translate\":\"wasd.apples.glowstone\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Makes you glow for a while.\",\"translate\": \"wasd.apples.glowstone.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_apple_type": 10,
+                "wasd_apple": 1
+            },
+            "minecraft:item_model": "wasd:apples/glowstone"
+        }
+    }
+}

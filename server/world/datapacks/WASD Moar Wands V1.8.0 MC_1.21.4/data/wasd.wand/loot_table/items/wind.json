@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:warped_fungus_on_a_stick",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Wind Wand\",\"translate\":\"wasd.wands.wind\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Shoots wind that deals knockback.\",\"translate\":\"wasd.wands.wind.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370112
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:wands/base_wand",
+                                "minecraft:custom_data": {
+                                    "wasd_wand_type": 12,
+                                    "wasd_wand": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        "ABA",
+        "BTB",
+        "ABA"
+    ],
+    "key": {
+        "T": "minecraft:iron_ingot",
+        "A": "#minecraft:planks",
+        "B": "minecraft:dirt"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:totem_of_undying",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Budget Totem of Undying\",\"translate\":\"wasd.totems.budget\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Saves your life, but doesn't do much else.\",\"translate\":\"wasd.totems.budget.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_totem_type": 1,
+                "wasd_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/budget"
+        }
+    }
+}

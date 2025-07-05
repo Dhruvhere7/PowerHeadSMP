@@ -1,0 +1,44 @@
+{
+    "group": "wasd_bows",
+    "category": "equipment",
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "123",
+        "456",
+        "789"
+    ],
+    "key": {
+        "1": "minecraft:poisonous_potato",
+        "2": "minecraft:suspicious_stew",
+        "3": "minecraft:spider_eye",
+        "4": "minecraft:rotten_flesh",
+        "5": "minecraft:bow",
+        "6": "minecraft:golden_carrot",
+        "7": "minecraft:pufferfish",
+        "8": "minecraft:potion",
+        "9": "minecraft:nether_wart"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:bow",
+        "components": {
+            "minecraft:item_name": "{\"translate\":\"wasd.bows.random\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.bows.random.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_model_data": {
+                "floats": [
+                    6370120
+                ]
+            },
+            "minecraft:item_model": "wasd:bows/random",
+            "repairable": {
+                "items": "potion"
+            },
+            "minecraft:max_damage": 384,
+            "minecraft:custom_data": {
+                "wasd_bow": 1
+            }
+        }
+    }
+}

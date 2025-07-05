@@ -1,0 +1,35 @@
+template raytrace {
+    with distance:word move_distance:word check_block:word check_entity:word command:raw{
+block {
+scoreboard players add @s wasd.timer 1
+tp @s ~ ~ ~
+
+<%%
+
+let check_block2 = ""
+let check_entity2 = ""
+
+if (check_block === "true")
+{
+check_block2 = "if block ^ ^ ^"+move_distance+ " #wasd.tags:nonsolid "
+}
+
+if (check_entity === "true")
+{
+check_entity2 = "positioned ~ ~1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~-1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~-1 ~ unless entity @e[type=#wasd.tags:mobs,distance=..1] positioned ~ ~1 ~ "
+}
+
+
+
+emit(`
+execute unless score @s wasd.timer matches ${distance}.. positioned ^ ^ ^${move_distance} ${check_block2}${check_entity2}run ${command}
+`)
+
+
+%%>
+
+        }
+
+    }
+}
+

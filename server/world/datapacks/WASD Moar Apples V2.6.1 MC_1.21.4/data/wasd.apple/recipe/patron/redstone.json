@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_apples_patron",
+    "pattern": [
+        "BBB",
+        "BBB",
+        "BBB"
+    ],
+    "key": {
+        "B": "minecraft:barrier"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "[{\"fallback\":\"Redstone Apple\",\"translate\":\"wasd.apples.redstone\", \"italic\":false},{\"fallback\":\" (Locked)\",\"translate\": \"wasd.patron.locked\", \"italic\":false, \"color\":dark_red}]",
+            "minecraft:lore": [
+                "{\"translate\": \"wasd.patron.lore\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore2\", \"italic\":false, \"color\":gold}",
+                "{\"translate\": \"wasd.patron.lore3\", \"italic\":false, \"color\":gold}",
+                "{\"text\": \" \"}",
+                "{\"fallback\":\"Gives Auto Step.\",\"translate\": \"wasd.apples.redstone.lore\", \"italic\":false, \"color\":blue}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_apple": 1,
+                "wasd_apple_type": 17
+            },
+            "minecraft:item_model": "wasd:apples/patron/redstone"
+        }
+    }
+}

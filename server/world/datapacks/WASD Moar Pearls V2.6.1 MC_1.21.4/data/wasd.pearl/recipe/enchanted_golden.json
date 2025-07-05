@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "wasd_pearls",
+    "ingredients": [
+        "minecraft:ender_pearl",
+        "minecraft:enchanted_golden_apple"
+    ],
+    "result": {
+        "count": 1,
+        "id": "minecraft:ender_pearl",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Enchanted Golden Pearl\",\"translate\":\"wasd.pearls.enchanted_golden\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Gives Enchanted Golden Apple effects when it lands.\",\"translate\":\"wasd.pearls.enchanted_golden.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:enchantment_glint_override": true,
+            "minecraft:custom_data": {
+                "wasd_pearl_type": 15,
+                "wasd_pearl": 1
+            },
+            "minecraft:item_model": "wasd:pearl/enchanted_golden"
+        }
+    }
+}

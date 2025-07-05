@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_apples",
+    "pattern": [
+        "XDX",
+        "XAX",
+        "XDX"
+    ],
+    "key": {
+        "X": "minecraft:experience_bottle",
+        "A": "minecraft:golden_apple",
+        "D": "minecraft:diamond"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:golden_apple",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Enchanted Spectator Apple\",\"translate\":\"wasd.apples.spectator2\", \"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Eat for 10 seconds of spectator mode.\",\"translate\": \"wasd.apples.spectator2.lore\", \"italic\":false, \"color\":blue}",
+                "{\"fallback\":\"Ends wherever you are.\",\"translate\": \"wasd.apples.spectator2.lore2\", \"italic\":false, \"color\":blue}"
+            ],
+            "enchantment_glint_override": true,
+            "minecraft:custom_data": {
+                "wasd_apple_type": 2,
+                "wasd_apple": 1
+            },
+            "minecraft:item_model": "wasd:apples/spectator"
+        }
+    }
+}

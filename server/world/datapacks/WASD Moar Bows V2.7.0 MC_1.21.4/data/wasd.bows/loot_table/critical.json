@@ -1,0 +1,38 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:bow",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"translate\":\"wasd.bows.critical\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"translate\": \"wasd.bows.critical.lore\", \"italic\":false, \"color\":blue}",
+                                    "{\"translate\": \"wasd.bows.critical.lore2\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370107
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:bows/critical",
+                                "repairable": {
+                                    "items": "diamond"
+                                },
+                                "minecraft:max_damage": 384,
+                                "minecraft:custom_data": {
+                                    "wasd_bow": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

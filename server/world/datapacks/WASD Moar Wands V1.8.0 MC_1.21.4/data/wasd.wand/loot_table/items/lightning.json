@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:warped_fungus_on_a_stick",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Lightning Wand\",\"translate\":\"wasd.wands.lightning\",\"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Strikes Lightning.\",\"translate\":\"wasd.wands.lightning.lore\",\"italic\":false,\"color\":\"blue\"}"
+                                ],
+                                "minecraft:custom_model_data": {
+                                    "floats": [
+                                        6370108
+                                    ]
+                                },
+                                "minecraft:item_model": "wasd:wands/base_wand",
+                                "minecraft:custom_data": {
+                                    "wasd_wand_type": 8,
+                                    "wasd_wand": 1
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

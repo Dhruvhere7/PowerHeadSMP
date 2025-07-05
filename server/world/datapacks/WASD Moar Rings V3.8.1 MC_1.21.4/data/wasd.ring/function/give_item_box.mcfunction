@@ -1,0 +1,24 @@
+setblock ~ ~ ~ minecraft:light_blue_shulker_box
+loot insert ~ ~ ~ loot wasd.ring:items/ring_1
+loot insert ~ ~ ~ loot wasd.ring:items/ring_2
+loot insert ~ ~ ~ loot wasd.ring:items/ring_3
+loot insert ~ ~ ~ loot wasd.ring:items/ring_4
+loot insert ~ ~ ~ loot wasd.ring:items/ring_5
+loot insert ~ ~ ~ loot wasd.ring:items/ring_6
+loot insert ~ ~ ~ loot wasd.ring:items/ring_7
+loot insert ~ ~ ~ loot wasd.ring:items/ring_8
+loot insert ~ ~ ~ loot wasd.ring:items/ring_9
+loot insert ~ ~ ~ loot wasd.ring:items/ring_10
+loot insert ~ ~ ~ loot wasd.ring:items/ring_11
+loot insert ~ ~ ~ loot wasd.ring:items/ring_12
+loot insert ~ ~ ~ loot wasd.ring:items/ring_13
+loot insert ~ ~ ~ loot wasd.ring:items/ring_14
+loot insert ~ ~ ~ loot wasd.ring:items/ring_15
+loot insert ~ ~ ~ loot wasd.ring:items/ring_16
+loot insert ~ ~ ~ loot wasd.ring:items/ring_17
+loot insert ~ ~ ~ loot wasd.ring:items/ring_18
+loot insert ~ ~ ~ loot wasd.ring:items/ring_19
+loot insert ~ ~ ~ loot wasd.ring:items/ring_20
+loot insert ~ ~ ~ loot wasd.ring:items/ring_21
+loot insert ~ ~ ~ loot wasd.ring:items/ring_22
+loot insert ~ ~ ~ loot wasd.ring:items/ring_23

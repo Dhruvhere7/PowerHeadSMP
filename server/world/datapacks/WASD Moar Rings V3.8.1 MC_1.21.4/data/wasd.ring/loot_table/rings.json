@@ -1,0 +1,262 @@
+{
+	"pools": [
+
+
+
+
+		{"rolls": {"min": 0,"max": 1},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 0
+			  }
+			},
+			{
+				"condition": "minecraft:random_chance",
+				"chance": 0.1
+			}
+		  ]},
+
+		{"rolls": {"min": 0,"max": 1},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 1
+			  }
+			},
+			{
+				"condition": "minecraft:random_chance",
+				"chance": 0.5
+			}
+		  ]},
+
+		{"rolls": {"min": 0,"max": 1},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 2
+			  }
+			}
+		  ]},
+
+		{"rolls": {"min": 1,"max": 2},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 3
+			  }
+			}
+		  ]},
+
+		{"rolls": {"min": 2,"max": 3},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 4
+			  }
+			}
+		  ]},
+
+		{"rolls": {"min": 3,"max": 5},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 5
+			  }
+			}
+		  ]},
+
+		{"rolls": {"min": 4,"max": 7},"entries": [
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_1"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_2"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_3"},
+			{"type": "minecraft:loot_table","weight": 15,"value": "wasd.ring:items/ring_4"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_5"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_6"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_7"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_8"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_9"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_10"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_11"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_12"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_13"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_14"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_15"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_16"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_17"},
+			{"type": "minecraft:loot_table","weight": 7,"value": "wasd.ring:items/ring_18"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_19"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_20"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_21"},
+			{"type": "minecraft:loot_table","weight": 1,"value": "wasd.ring:items/ring_22"},
+			{"type": "minecraft:loot_table","weight": 3,"value": "wasd.ring:items/ring_23"}
+		],
+		"conditions": [
+			{
+			  "condition": "minecraft:entity_scores",
+			  "entity": "this",
+			  "scores": {
+				"wasd.ring_chance": 6
+			  }
+			}
+		  ]}
+
+
+	]
+}

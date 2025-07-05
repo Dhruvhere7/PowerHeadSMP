@@ -1,0 +1,22 @@
+{
+  "parent": "wasd.lib:wasd/root",
+  "display": {
+    "icon": {
+      "id": "minecraft:brick",
+      "components": {
+        "minecraft:item_model": "wasd:datapacks/apples"
+      }
+    },
+    "title": "Moar Apples",
+    "description": "Adds new apple types to the game.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

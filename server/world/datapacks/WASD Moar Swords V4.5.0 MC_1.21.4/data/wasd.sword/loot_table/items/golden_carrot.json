@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stone_sword",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Golden Carrot Sword\",\"translate\":\"wasd.sword.golden_carrot\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Gives night vision on attack.\",\"translate\": \"wasd.sword.golden_carrot.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:item_model": "wasd:swords/golden_carrot",
+                                "minecraft:max_damage": 250,
+                                "repairable": {"items": "golden_carrot"},
+                                "minecraft:custom_data": {
+                                    "wasd_sword": 1,
+                                    "wasd.sword_type": 86
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "minecraft:attack_damage",
+                                            "id": "6370001",
+                                            "amount": 6,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        },
+                                        {
+                                            "type": "minecraft:attack_speed",
+                                            "id": "6370001",
+                                            "amount": -2.4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

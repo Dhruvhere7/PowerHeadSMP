@@ -1,0 +1,2 @@
+#mc-build WASD content
+tag @s[tag=!wasd.slime_apple,tag=!wasd.nether_apple,tag=!wasd.flare_apple,tag=!wasd.egg_apple,tag=!wasd.dance_apple,tag=!wasd.crying_obsidian_apple,tag=!wasd.poisoned,tag=!wasd.feathered_apple,tag=!wasd.redstone_apple,tag=!wasd.giant_apple,tag=!wasd.pickaxe_apple,tag=!wasd.long_apple,tag=!wasd.tall_apple,tag=!wasd.ghostly_apple,tag=!wasd.prismarine_apple] remove wasd.apple_effect

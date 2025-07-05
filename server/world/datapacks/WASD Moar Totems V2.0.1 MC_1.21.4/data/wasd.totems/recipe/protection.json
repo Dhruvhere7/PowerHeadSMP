@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wasd_totems",
+    "pattern": [
+        "ABA",
+        "ATA",
+        "AAA"
+    ],
+    "key": {
+        "T": "minecraft:totem_of_undying",
+        "A": "minecraft:snow_block",
+        "B": "minecraft:carved_pumpkin"
+    },
+    "result": {
+        "count": 1,
+        "id": "minecraft:totem_of_undying",
+        "components": {
+            "minecraft:item_name": "{\"fallback\":\"Totem of Protection\",\"translate\":\"wasd.totems.protection\",\"italic\":false}",
+            "minecraft:lore": [
+                "{\"fallback\":\"Spawns a snow golem when activated.\",\"translate\":\"wasd.totems.protection.lore\",\"italic\":false,\"color\":\"blue\"}"
+            ],
+            "minecraft:custom_data": {
+                "wasd_totem_type": 7,
+                "wasd_totem": 1
+            },
+            "minecraft:item_model": "wasd:totem/protection"
+        }
+    }
+}

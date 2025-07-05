@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:stone_sword",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_components",
+                            "components": {
+                                "minecraft:item_name": "{\"fallback\":\"Sign Sword\",\"translate\":\"wasd.sword.sign\", \"italic\":false}",
+                                "minecraft:lore": [
+                                    "{\"fallback\":\"Places a sign into the world.\",\"translate\": \"wasd.sword.sign.lore\", \"italic\":false, \"color\":blue}"
+                                ],
+                                "minecraft:item_model": "wasd:swords/sign",
+                                "minecraft:max_damage": 59,
+                                "repairable": {"items": "#minecraft:signs"},
+                                "minecraft:custom_data": {
+                                    "wasd_sword": 1,
+                                    "wasd.sword_type": 105
+                                },
+                                "minecraft:attribute_modifiers": {
+                                    "modifiers": [
+                                        {
+                                            "type": "minecraft:attack_damage",
+                                            "id": "6370001",
+                                            "amount": 4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        },
+                                        {
+                                            "type": "minecraft:attack_speed",
+                                            "id": "6370001",
+                                            "amount": -2.4,
+                                            "operation": "add_value",
+                                            "slot": "mainhand"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
